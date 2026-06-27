@@ -85,18 +85,7 @@
   }
 
   function drawBackground() {
-    var gridColor = mode === "dark" ? "#26354b" : "#d9e0e8";
-    ctx.save();
-    ctx.globalAlpha = mode === "dark" ? 0.42 : 0.48;
-    ctx.strokeStyle = gridColor;
-    ctx.lineWidth = 1;
-    for (var x = 28; x < width; x += 58) {
-      ctx.beginPath();
-      ctx.moveTo(x, height * 0.2);
-      ctx.lineTo(x, height - 22);
-      ctx.stroke();
-    }
-    ctx.restore();
+    return;
   }
 
   function drawSpotlight(sourceX, sourceY, targetX, targetY, fade) {
