@@ -47,6 +47,7 @@
 
   var duration = parseInt(hero.getAttribute("data-duration"), 10) || 7800;
   var characterSpeed = parseFloat(hero.getAttribute("data-character-speed")) || 1;
+  var revealSpeed = parseFloat(hero.getAttribute("data-reveal-speed")) || 1;
   var frameId = 0;
   var startedAt = 0;
   var width = 0;
@@ -125,13 +126,17 @@
       ctx.fill();
     }
 
-    var landing = ctx.createRadialGradient(targetX, targetY, 0, targetX, targetY, spread);
-    landing.addColorStop(0, "rgba(15, 118, 110, 0.18)");
-    landing.addColorStop(1, "rgba(15, 118, 110, 0)");
-    ctx.fillStyle = landing;
-    ctx.beginPath();
-    ctx.arc(targetX, targetY, spread, 0, Math.PI * 2);
-    ctx.fill();
+    var landingStrength = clamp(progress, 0, 1);
+    if (landingStrength > 0.01) {
+      var landingRadius = spread * (0.42 + landingStrength * 0.58);
+      var landing = ctx.createRadialGradient(targetX, targetY, 0, targetX, targetY, landingRadius);
+      landing.addColorStop(0, "rgba(15, 118, 110, " + 0.16 * landingStrength + ")");
+      landing.addColorStop(1, "rgba(15, 118, 110, 0)");
+      ctx.fillStyle = landing;
+      ctx.beginPath();
+      ctx.arc(targetX, targetY, landingRadius, 0, Math.PI * 2);
+      ctx.fill();
+    }
 
     ctx.restore();
   }
@@ -199,7 +204,8 @@
 
     var raw = clamp((timestamp - startedAt) / duration, 0, 1);
     var motion = easeInOut(clamp((raw * characterSpeed) / 0.96, 0, 1));
-    var reveal = clamp((easeOut(raw) - 0.035) / 0.9, 0, 1);
+    var revealInput = clamp(raw * revealSpeed, 0, 1);
+    var reveal = clamp((easeOut(revealInput) - 0.035) / 0.9, 0, 1);
     var fade = raw > 0.9 ? clamp((1 - raw) / 0.1, 0, 1) : 1;
     var mode = currentMode();
     var box = titleBox();
@@ -207,6 +213,12 @@
     var revealX = box.left + box.width * reveal;
     var waterTargetX = layout.wateringX + clamp(width * 0.028, 12, 26);
     var waterTargetY = layout.wateringY + clamp(height * 0.13, 20, 32);
+    var waterImpact = clamp((raw - 0.06) / 0.46, 0, 1);
+
+    if (mode === "light") {
+      reveal = Math.min(reveal, waterImpact);
+      revealX = box.left + box.width * reveal;
+    }
 
     hero.style.setProperty("--hero-reveal", Math.round(reveal * 100) + "%");
     hero.style.setProperty("--hero-person-x", Math.round(layout.x) + "px");
@@ -223,7 +235,7 @@
         fade
       );
     } else {
-      drawWater(layout.wateringX, layout.wateringY, waterTargetX, waterTargetY, 1, raw * 5, fade);
+      drawWater(layout.wateringX, layout.wateringY, waterTargetX, waterTargetY, waterImpact, raw * 5, fade);
     }
 
     if (raw < 1) {
