@@ -5,7 +5,7 @@ description: "Personal website of Doeun Kim."
 hero_intro: true
 ---
 
-<section class="hero-intro" data-hero-intro data-duration="7800" data-character-speed="0.3" data-reveal-speed="0.5" aria-labelledby="hero-intro-title">
+<section class="hero-intro" data-hero-intro data-duration="7800" data-character-speed="0.45" data-water-speed="1.5" data-reveal-speed="0.5" aria-labelledby="hero-intro-title">
   <canvas class="hero-intro-canvas" data-hero-canvas aria-hidden="true"></canvas>
   <div class="hero-character" data-hero-character aria-hidden="true">
     <span class="hero-character-head"></span>

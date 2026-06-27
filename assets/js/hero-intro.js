@@ -47,6 +47,7 @@
 
   var duration = parseInt(hero.getAttribute("data-duration"), 10) || 7800;
   var characterSpeed = parseFloat(hero.getAttribute("data-character-speed")) || 1;
+  var waterSpeed = parseFloat(hero.getAttribute("data-water-speed")) || 1;
   var revealSpeed = parseFloat(hero.getAttribute("data-reveal-speed")) || 1;
   var frameId = 0;
   var startedAt = 0;
@@ -213,10 +214,10 @@
     var revealX = box.left + box.width * reveal;
     var waterTargetX = layout.wateringX + clamp(width * 0.028, 12, 26);
     var waterTargetY = layout.wateringY + clamp(height * 0.13, 20, 32);
-    var waterImpact = clamp((raw - 0.06) / 0.46, 0, 1);
+    var waterImpact = clamp(((raw - 0.06) * waterSpeed) / 0.46, 0, 1);
 
     if (mode === "light") {
-      reveal = Math.min(reveal, waterImpact);
+      reveal = waterImpact;
       revealX = box.left + box.width * reveal;
     }
 
@@ -235,7 +236,7 @@
         fade
       );
     } else {
-      drawWater(layout.wateringX, layout.wateringY, waterTargetX, waterTargetY, waterImpact, raw * 5, fade);
+      drawWater(layout.wateringX, layout.wateringY, waterTargetX, waterTargetY, waterImpact, raw * 5 * waterSpeed, fade);
     }
 
     if (raw < 1) {
