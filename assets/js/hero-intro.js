@@ -131,11 +131,16 @@
     if (landingStrength > 0.01) {
       var landingRadius = spread * (0.42 + landingStrength * 0.58);
       var landing = ctx.createRadialGradient(targetX, targetY, 0, targetX, targetY, landingRadius);
-      landing.addColorStop(0, "rgba(15, 118, 110, " + 0.16 * landingStrength + ")");
+      landing.addColorStop(0, "rgba(15, 118, 110, " + 0.2 * landingStrength + ")");
       landing.addColorStop(1, "rgba(15, 118, 110, 0)");
       ctx.fillStyle = landing;
       ctx.beginPath();
       ctx.arc(targetX, targetY, landingRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "rgba(15, 118, 110, " + 0.42 * fade + ")";
+      ctx.beginPath();
+      ctx.ellipse(targetX, targetY + 2, 2.4, 1.25, 0, 0, Math.PI * 2);
       ctx.fill();
     }
 
@@ -171,10 +176,9 @@
   }
 
   function characterLayout(box, motion, mode) {
-    var characterWidth = 70;
+    var characterWidth = 44;
     var wateringOffset = 58;
-    var isNarrow = width < 560;
-    var startX = isNarrow ? box.left + 8 : box.left + 10;
+    var startX = box.left - wateringOffset;
     var endX = Math.min(width - characterWidth - 4, box.right - wateringOffset);
     var x = startX + (endX - startX) * motion;
     var y = clamp(box.top - 70, 16, Math.max(16, height - 92));
@@ -216,8 +220,8 @@
     var box = titleBox();
     var layout = characterLayout(box, motion, mode);
     var revealX = box.left + box.width * reveal;
-    var waterTargetX = clamp(layout.wateringX + 10, box.left, box.right);
-    var waterTargetY = box.centerY;
+    var waterTargetX = clamp(layout.wateringX, box.left, box.right);
+    var waterTargetY = box.top + box.height * 0.58;
 
     if (mode === "light") {
       reveal = waterImpact > 0.01
