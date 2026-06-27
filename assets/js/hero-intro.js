@@ -213,7 +213,7 @@
     var startX = box.left - 112;
     var endX = Math.min(width - characterWidth - 4, box.right + 26);
     var x = startX + (endX - startX) * motion;
-    var y = clamp(box.top + 28, 34, Math.max(34, height - 122));
+    var y = clamp(box.bottom - 78, 38, Math.max(38, height - 122));
 
     return {
       x: x,

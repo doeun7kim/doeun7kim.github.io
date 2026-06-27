@@ -123,12 +123,14 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 3;
+  z-index: 6;
   width: 70px;
   height: 112px;
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(var(--hero-person-x), var(--hero-person-y), 0);
+  filter: drop-shadow(0 8px 12px rgba(15, 23, 42, 0.12));
+  transform: translate3d(var(--hero-person-x), var(--hero-person-y), 0) scale(0.92);
+  transform-origin: top left;
   transition: opacity 220ms ease;
 }
 
