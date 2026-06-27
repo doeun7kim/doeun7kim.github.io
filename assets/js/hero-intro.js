@@ -301,7 +301,8 @@
 
   function characterLayout(box, motion, mode) {
     var characterWidth = 70;
-    var startX = box.left - 112;
+    var isNarrow = width < 560;
+    var startX = isNarrow ? box.left - 28 : box.left - 112;
     var endX = Math.min(width - characterWidth - 4, box.right + 26);
     var x = startX + (endX - startX) * motion;
     var y = clamp(box.bottom + 8, 58, Math.max(58, height - 112));
