@@ -1,6 +1,10 @@
 .hero-intro {
   --hero-reveal: 100%;
   --hero-reveal-width: 100%;
+  --hero-person-x: -40px;
+  --hero-person-y: 150px;
+  --hero-person-body: #243447;
+  --hero-person-head: #f7d7bd;
   position: relative;
   min-height: 238px;
   margin: -8px 0 38px;
@@ -13,6 +17,7 @@
 
 @media (prefers-color-scheme: dark) {
   .hero-intro {
+    --hero-person-body: #e6edf7;
     background:
       linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(17, 29, 49, 0.96)),
       linear-gradient(90deg, rgba(94, 234, 212, 0.08), rgba(140, 200, 255, 0.05));
@@ -25,6 +30,25 @@
   inset: auto 0 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(15, 118, 110, 0.26), transparent);
+}
+
+.hero-intro.hero-intro--active::before {
+  content: "";
+  position: absolute;
+  left: var(--hero-person-x);
+  top: var(--hero-person-y);
+  z-index: 4;
+  width: 13px;
+  height: 26px;
+  border-radius: 5px 5px 3px 3px;
+  background: var(--hero-person-body);
+  box-shadow:
+    0 -15px 0 -3px var(--hero-person-head),
+    12px 3px 0 -5px var(--accent),
+    -6px 24px 0 -5px var(--hero-person-body),
+    8px 24px 0 -5px var(--hero-person-body);
+  opacity: 0.78;
+  pointer-events: none;
 }
 
 .hero-intro-canvas {

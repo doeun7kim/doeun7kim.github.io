@@ -391,6 +391,8 @@
       var revealX = box.left + box.width * reveal;
       var sourceX = box.left - scale + (box.width + scale * 2.2) * motion;
       var sourceY = box.bottom + scale * 0.56;
+      hero.style.setProperty("--hero-person-x", Math.round(sourceX - scale * 0.95) + "px");
+      hero.style.setProperty("--hero-person-y", Math.round(sourceY - scale * 0.94) + "px");
 
       drawOperator(sourceX, sourceY, scale, raw * 2.8, endFade);
 
