@@ -77,12 +77,6 @@
   display: none;
 }
 
-@media (min-width: 900px) {
-  .hero-intro-title {
-    white-space: nowrap;
-  }
-}
-
 .hero-intro.hero-intro--active {
   --hero-reveal: 0%;
 }
