@@ -304,9 +304,7 @@
     var startX = box.left - 112;
     var endX = Math.min(width - characterWidth - 4, box.right + 26);
     var x = startX + (endX - startX) * motion;
-    var y = mode === "dark"
-      ? clamp(box.top + 16, 34, Math.max(34, height - 122))
-      : clamp(box.bottom - 36, 48, Math.max(48, height - 122));
+    var y = clamp(box.bottom + 8, 58, Math.max(58, height - 112));
 
     return {
       x: x,
