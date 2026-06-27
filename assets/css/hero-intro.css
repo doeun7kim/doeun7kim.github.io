@@ -356,8 +356,10 @@
   }
 
   .hero-intro-title {
-    max-width: 100%;
+    width: min(100%, 360px);
+    max-width: calc(100vw - 24px);
     font-size: 1.08rem;
+    overflow-wrap: anywhere;
     white-space: normal;
   }
 }
@@ -373,6 +375,7 @@
   }
 
   .hero-intro-title {
+    width: min(100%, 340px);
     font-size: 1.02rem;
   }
 }
