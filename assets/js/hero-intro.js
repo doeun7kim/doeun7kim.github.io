@@ -198,6 +198,16 @@
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
 
+    ctx.fillStyle = dark ? "rgba(94, 234, 212, 0.16)" : "rgba(15, 118, 110, 0.12)";
+    ctx.beginPath();
+    ctx.arc(centerX, torsoTop + scale * 0.32, scale * 0.66, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = dark ? "rgba(0, 0, 0, 0.22)" : "rgba(23, 32, 51, 0.12)";
+    ctx.beginPath();
+    ctx.ellipse(centerX, y + scale * 0.11, scale * 0.58, scale * 0.09, 0, 0, Math.PI * 2);
+    ctx.fill();
+
     ctx.strokeStyle = dark ? "rgba(226, 237, 247, 0.58)" : "rgba(23, 32, 51, 0.58)";
     ctx.lineWidth = Math.max(1.4, scale * 0.05);
 
