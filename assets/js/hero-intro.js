@@ -396,13 +396,13 @@
       var sourceX = mode === "light" ? handX + scale * 0.32 : handX;
       var sourceY = mode === "light" ? handY - scale * 0.06 : handY;
 
+      drawOperator(sourceX, sourceY, scale, raw * 2.8, endFade);
+
       if (mode === "dark") {
         drawSpotlight(sourceX, sourceY, revealX, box.y, endFade);
       } else {
         drawWater(sourceX, sourceY, revealX, box.bottom + 2, reveal, raw * 3.2, endFade);
       }
-
-      drawOperator(sourceX, sourceY, scale, raw * 2.8, endFade);
 
       if (mode === "light") {
         drawSprouts(box, reveal, endFade);
