@@ -387,14 +387,10 @@
       ctx.clearRect(0, 0, width, height);
       drawBackground();
 
-      var groundY = height - 28;
       var scale = clamp(height * 0.23, 34, 46);
-      var charX = -scale + (width + scale * 2.2) * motion;
-      var handX = charX + scale * 0.64;
-      var handY = groundY - scale * 1.12;
       var revealX = box.left + box.width * reveal;
-      var sourceX = mode === "light" ? handX + scale * 0.32 : handX;
-      var sourceY = mode === "light" ? handY - scale * 0.06 : handY;
+      var sourceX = box.left - scale + (box.width + scale * 2.2) * motion;
+      var sourceY = box.bottom + scale * 0.56;
 
       drawOperator(sourceX, sourceY, scale, raw * 2.8, endFade);
 
