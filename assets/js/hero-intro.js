@@ -281,6 +281,94 @@
     ctx.restore();
   }
 
+  function drawOperator(sourceX, sourceY, scale, step, fade) {
+    var dark = mode === "dark";
+    var bob = Math.sin(step * Math.PI * 2) * 1.4;
+    var x = sourceX - scale * 0.68;
+    var y = sourceY + scale * 0.16 + bob;
+    var headR = scale * 0.16;
+
+    ctx.save();
+    ctx.globalAlpha = fade;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    ctx.fillStyle = dark ? "rgba(94, 234, 212, 0.2)" : "rgba(15, 118, 110, 0.14)";
+    ctx.beginPath();
+    ctx.arc(x, y - scale * 0.18, scale * 0.46, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = dark ? "rgba(226, 237, 247, 0.82)" : "rgba(23, 32, 51, 0.72)";
+    ctx.lineWidth = Math.max(1.4, scale * 0.045);
+
+    ctx.beginPath();
+    ctx.moveTo(x - scale * 0.08, y + scale * 0.18);
+    ctx.lineTo(x - scale * 0.22, y + scale * 0.58);
+    ctx.moveTo(x + scale * 0.06, y + scale * 0.18);
+    ctx.lineTo(x + scale * 0.26, y + scale * 0.56);
+    ctx.stroke();
+
+    ctx.fillStyle = dark ? "#e6edf7" : "#243447";
+    ctx.beginPath();
+    ctx.moveTo(x - scale * 0.22, y - scale * 0.28);
+    ctx.lineTo(x + scale * 0.18, y - scale * 0.22);
+    ctx.lineTo(x + scale * 0.14, y + scale * 0.2);
+    ctx.lineTo(x - scale * 0.18, y + scale * 0.22);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = dark ? "#5eead4" : "#0f766e";
+    ctx.beginPath();
+    ctx.moveTo(x - scale * 0.17, y - scale * 0.2);
+    ctx.lineTo(x + scale * 0.14, y - scale * 0.19);
+    ctx.lineTo(x + scale * 0.08, y + scale * 0.15);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.strokeStyle = dark ? "rgba(226, 237, 247, 0.86)" : "rgba(23, 32, 51, 0.74)";
+    ctx.beginPath();
+    ctx.moveTo(x + scale * 0.14, y - scale * 0.05);
+    ctx.lineTo(sourceX, sourceY);
+    ctx.stroke();
+
+    ctx.fillStyle = "#f7d7bd";
+    ctx.beginPath();
+    ctx.arc(x - scale * 0.02, y - scale * 0.55, headR, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = dark ? "#07111f" : "#172033";
+    ctx.beginPath();
+    ctx.moveTo(x - scale * 0.17, y - scale * 0.6);
+    ctx.quadraticCurveTo(x, y - scale * 0.77, x + scale * 0.15, y - scale * 0.58);
+    ctx.lineTo(x + scale * 0.12, y - scale * 0.48);
+    ctx.quadraticCurveTo(x, y - scale * 0.58, x - scale * 0.16, y - scale * 0.48);
+    ctx.closePath();
+    ctx.fill();
+
+    if (dark) {
+      ctx.fillStyle = "#f4d35e";
+      ctx.fillRect(sourceX - scale * 0.03, sourceY - scale * 0.05, scale * 0.18, scale * 0.1);
+    } else {
+      ctx.fillStyle = "#73a9a2";
+      ctx.strokeStyle = "rgba(15, 118, 110, 0.72)";
+      ctx.lineWidth = Math.max(1, scale * 0.035);
+      ctx.beginPath();
+      ctx.moveTo(sourceX - scale * 0.22, sourceY - scale * 0.02);
+      ctx.lineTo(sourceX + scale * 0.06, sourceY - scale * 0.04);
+      ctx.lineTo(sourceX + scale * 0.04, sourceY + scale * 0.16);
+      ctx.lineTo(sourceX - scale * 0.23, sourceY + scale * 0.17);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(sourceX + scale * 0.05, sourceY + scale * 0.02);
+      ctx.lineTo(sourceX + scale * 0.24, sourceY - scale * 0.06);
+      ctx.stroke();
+    }
+
+    ctx.restore();
+  }
+
   function draw(timestamp) {
     if (!startedAt) {
       startedAt = timestamp;
@@ -305,14 +393,16 @@
       var handX = charX + scale * 0.64;
       var handY = groundY - scale * 1.12;
       var revealX = box.left + box.width * reveal;
+      var sourceX = mode === "light" ? handX + scale * 0.32 : handX;
+      var sourceY = mode === "light" ? handY - scale * 0.06 : handY;
 
       if (mode === "dark") {
-        drawSpotlight(handX, handY, revealX, box.y, endFade);
+        drawSpotlight(sourceX, sourceY, revealX, box.y, endFade);
       } else {
-        drawWater(handX + scale * 0.32, handY - scale * 0.06, revealX, box.bottom + 2, reveal, raw * 3.2, endFade);
+        drawWater(sourceX, sourceY, revealX, box.bottom + 2, reveal, raw * 3.2, endFade);
       }
 
-      drawCharacter(charX, groundY, scale, raw * 2.8, endFade);
+      drawOperator(sourceX, sourceY, scale, raw * 2.8, endFade);
 
       if (mode === "light") {
         drawSprouts(box, reveal, endFade);
