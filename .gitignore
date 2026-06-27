@@ -1,0 +1,12 @@
+_site/
+.jekyll-cache/
+.sass-cache/
+.bundle/
+.tools/
+vendor/
+Gemfile.lock
+MyPicture.jpg
+*.aux
+*.log
+*.out
+*.toc

@@ -1,0 +1,34 @@
+title: "Doeun Kim"
+description: "Academic homepage of Doeun Kim, undergraduate researcher in causal machine learning."
+url: "https://doeun7kim.github.io"
+baseurl: ""
+
+author:
+  name: "Doeun Kim"
+  email: "dragonhope@naver.com"
+  location: "Seoul, South Korea"
+
+markdown: kramdown
+permalink: pretty
+
+nav:
+  - title: "About"
+    url: "/"
+  - title: "Research"
+    url: "/research/"
+  - title: "Workshop Papers"
+    url: "/workshop-papers/"
+  - title: "Projects"
+    url: "/projects/"
+  - title: "CV"
+    url: "/cv/"
+  - title: "Contact"
+    url: "/contact/"
+
+exclude:
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "main.tex"
+  - "README.md"
+  - "vendor"
+  - "node_modules"

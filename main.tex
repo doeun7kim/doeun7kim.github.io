@@ -1,0 +1,189 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[left=0.70in,right=0.70in,top=0.50in,bottom=0.65in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{microtype}
+
+\definecolor{linkblue}{HTML}{003A80}
+\hypersetup{colorlinks=true, urlcolor=linkblue, linkcolor=linkblue}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{0pt}
+\sloppy
+
+\titleformat{\section}
+  {\large\scshape\bfseries}
+  {}{0em}{}[\vspace{-0.42em}\rule{\linewidth}{0.4pt}\vspace{-0.38em}]
+\titlespacing*{\section}{0pt}{0.92em}{0.48em}
+
+\setlist[itemize]{
+  leftmargin=1.10em,
+  itemsep=0.18em,
+  topsep=0.14em,
+  parsep=0em,
+  partopsep=0em
+}
+\renewcommand\labelitemi{$\circ$}
+
+\newcommand{\cvitem}[4]{%
+  \item \begin{tabularx}{\linewidth}[t]{@{}>{\RaggedRight\arraybackslash}X@{\hspace{0.8em}}>{\RaggedLeft\arraybackslash}p{2.10in}@{}}
+  \textbf{#1} & \textit{#2}\\
+  \textit{#3} & #4
+  \end{tabularx}\vspace{-0.18em}
+}
+
+\newcommand{\cvitemplain}[2]{%
+  \item \begin{tabularx}{\linewidth}[t]{@{}>{\RaggedRight\arraybackslash}X@{\hspace{0.8em}}>{\RaggedLeft\arraybackslash}p{2.10in}@{}}
+  \textbf{#1} & \textit{#2}
+  \end{tabularx}\vspace{-0.18em}
+}
+
+\newcommand{\projectitem}[2]{%
+  \item \begin{tabularx}{\linewidth}[t]{@{}>{\RaggedRight\arraybackslash}X@{\hspace{0.8em}}>{\RaggedLeft\arraybackslash}p{2.10in}@{}}
+  \textbf{#1} & \textit{#2}
+  \end{tabularx}\vspace{-0.14em}
+}
+
+\newcommand{\awarditem}[2]{%
+  \item \begin{tabularx}{\linewidth}[t]{@{}>{\RaggedRight\arraybackslash}X@{\hspace{0.8em}}>{\RaggedLeft\arraybackslash}p{1.65in}@{}}
+  #1 & #2
+  \end{tabularx}\vspace{-0.14em}
+}
+
+\newcommand{\paperitem}[2]{%
+  \noindent\makebox[2.2em][l]{\textbf{[#1]}}#2\par\vspace{0.34em}
+}
+
+\begin{document}
+
+\begin{center}
+    {\Huge \bfseries Doeun Kim}\\[0.38em]
+    \href{mailto:dragonhope@naver.com}{dragonhope@naver.com} \; | \; Seoul, South Korea
+\end{center}
+\vspace{0.16em}
+
+\section*{Education}
+\begin{itemize}[label=$\bullet$, leftmargin=0.70em]
+  \cvitemplain{Sogang University}{Mar 2021 -- Present}
+  \vspace{-0.08em}
+  \begin{tabularx}{\linewidth}{@{}Xr@{}}
+  \textit{B.S. in Mathematics and Computer Science} & Seoul, South Korea
+  \end{tabularx}
+  \begin{itemize}
+    \item \textbf{GPA:} 4.16 / 4.30; \textbf{Current:} 7th semester
+    \item \textbf{Leave of Absence:} Mandatory military service, Oct 2022 -- Apr 2024
+  \end{itemize}
+\end{itemize}
+
+\section*{Research Interests}
+Causal Machine Learning, Causal Foundation Models, Graph Representation Learning, Natural Language Processing
+
+\section*{Research Experience}
+\begin{itemize}[label=$\bullet$, leftmargin=0.70em]
+  \cvitem{Causality Lab, SNU Graduate School of Data Science}{Jul 2025 -- Present}{Undergraduate Researcher (Advisor: Prof. Sanghack Lee)}{Seoul, South Korea}
+  \begin{itemize}
+    \item Investigated failure modes of Causal Foundation Models (CFMs) under post-treatment conditioning, query misspecification, and causal structure ambiguity.
+    \item Studied graph-aware approaches for incorporating structural information into PFN-style causal foundation models.
+    \item Co-authored ICML 2026 workshop work on CFM robustness and query specification.
+  \end{itemize}
+
+  \cvitem{SKI-ML Lab, SNU Graduate School of Data Science}{Jun 2024 -- Aug 2024}{Intern (Advisor: Prof. Jay-Yoon Lee)}{Seoul, South Korea}
+\end{itemize}
+
+\section*{Teaching \& Service Experience}
+\begin{itemize}[label=$\bullet$, leftmargin=0.70em]
+  \cvitem{Sogang University}{Winter 2024, Summer 2025}{Teaching Assistant, Introduction to AI Programming (COR1010)}{Seoul, South Korea}
+  \begin{itemize}
+    \item Assisted course operation, programming assignment support, and student Q\&A for an introductory AI programming course.
+  \end{itemize}
+
+  \cvitem{KATUSA, Republic of Korea Army}{Oct 2022 -- Apr 2024}{Military Service, Korean Augmentation to the U.S. Army}{South Korea}
+  \begin{itemize}
+    \item Completed mandatory military service in a bilingual U.S.-ROK Army environment.
+  \end{itemize}
+\end{itemize}
+
+\section*{Workshop Papers}
+\paperitem{1}{\textbf{A Structural View of Query Misspecification in Causal Foundation Models.} \textit{ICML 2026 Workshop on Structured Probabilistic Inference \& Generative Modeling (SPIGM), 2026.}\\
+\textbf{Causal Foundation Models Perform Better without Post-treatment Variables.} \textit{ICML 2026 Workshop on Foundation Models for Structured Data (FMSD), 2026.}}
+
+\section*{Projects}
+\begin{itemize}[label=$\bullet$, leftmargin=0.70em]
+
+  \projectitem{Do-PFN Really Do Causality?}{Fall 2025}
+  \begin{itemize}
+    \item Collaborated with Causality Lab interns on a research project examining whether Do-PFN/PFN-style models exhibit causal reasoning behavior.
+  \end{itemize}
+
+  \projectitem{FA-AL-MOT: Multimodal Fashion Price Prediction}{Fall 2025}
+  \begin{itemize}
+    \item Built a multimodal AI model for C2C fashion resale price prediction and product attribute classification using image and text features.
+    \item Used CLIP fusion, LLM-based attribute restoration, and GPU-accelerated deep learning; achieved $R^2 = 0.8904$ for price prediction.
+  \end{itemize}
+
+  \projectitem{DIGIRO: Real-Time Notification Service}{Summer 2025}
+  \begin{itemize}
+    \item Architected and developed a real-time notification service using FastAPI (Python) and PostgreSQL to aggregate and serve live data for Seoul's Jongno-gu district.
+    \item Containerized the application's backend, crawler, and database services using Docker and managed deployment orchestration with Kubernetes for scalability and reliability.
+    \item Integrated multiple external sources, including Seoul Public Data and Kakao Maps APIs, to provide users with an interactive map visualizing protest locations, routes, and traffic control areas.
+  \end{itemize}
+
+  \projectitem{News Summarization with GPT-2 \& Knowledge Distillation}{Spring 2025}
+  \begin{itemize}
+    \item Enhanced GPT-2 summarization on CNN/DailyMail dataset; sequence-level distillation from LLaMA3-8B improved ROUGE-1 by 20.6\% and METEOR by 54.6\%.
+    \item Analyzed decoder-only model limitations and cross-model distillation challenges.
+  \end{itemize}
+
+  \projectitem{Convenience-Store Management Application}{Spring 2025}
+  \begin{itemize}
+    \item C/MySQL CLI tool for business analytics queries.
+  \end{itemize}
+
+  \projectitem{Automated Lighting Control via Object Detection}{Winter 2024}
+  \begin{itemize}
+    \item Integrated YOLO + ByteTrack with a line-crossing counter to trigger lights based on occupancy.
+  \end{itemize}
+
+  \projectitem{RAG Chatbot for Academic Catalog}{Fall 2024}
+  \begin{itemize}
+    \item Built a RAG pipeline with SOLAR embeddings, SOLAR API, ChromaDB, and Streamlit UI for real-time Q\&A on Academic Catalog.
+  \end{itemize}
+
+  \projectitem{Fine-Grained Classification}{Spring 2024}
+  \begin{itemize}
+    \item Developed ResNet-101 classifier on CUB-200-2011; augmented data with Gaussian noise to defend against PGD attacks.
+  \end{itemize}
+\end{itemize}
+
+\section*{Scholarships}
+\begin{itemize}[label=$\bullet$, leftmargin=0.70em]
+\awarditem{\textbf{KT Digital Talent Scholarship}, KT (Full Funding)}{Spring 2025 -- Present}
+\end{itemize}
+
+\section*{Awards \& Honors}
+\begin{itemize}[label=$\bullet$, leftmargin=0.70em]
+\awarditem{\textbf{Outstanding Scholar}, KT Group Hope Sharing Foundation (selected as one of 4 outstanding scholars)}{Jan 2026}
+\awarditem{\textbf{Excellence Award in Inquiry Community Program (for \textit{Automated Lighting Control via Object Detection})}, Sogang University}{Jan 2026}
+\awarditem{\textbf{Dean's List}, College of Natural Sciences, Sogang University (Year of 2021)}{2022}
+\end{itemize}
+
+
+
+\section*{Skills}
+\begin{itemize}[label=$\bullet$, leftmargin=0.70em]
+  \item \textbf{Programming \& Tools:} C/C++, Python, MySQL, SAS, MATLAB
+  \item \textbf{Languages:} Korean (Native), English (Fluent)
+\end{itemize}
+
+\end{document}
