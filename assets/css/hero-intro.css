@@ -32,6 +32,7 @@
   position: relative;
   z-index: 2;
   max-width: 760px;
+  min-width: 0;
   padding: 42px 0 48px;
 }
 
@@ -68,6 +69,7 @@
   color: #334155;
   font-size: 1.06rem;
   line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
 .hero-intro-bio {
@@ -76,6 +78,7 @@
   color: var(--muted);
   font-size: 0.99rem;
   line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 .hero-intro.hero-intro--active {
@@ -117,12 +120,19 @@
   }
 
   .hero-intro-copy {
+    max-width: 100%;
     padding: 34px 0 44px;
   }
 
   .hero-intro-title {
+    max-width: 100%;
     font-size: 2.08rem;
     white-space: normal;
+  }
+
+  .hero-intro-subtitle,
+  .hero-intro-bio {
+    max-width: 100%;
   }
 
   .hero-intro.hero-intro--active .hero-intro-title-reveal {
