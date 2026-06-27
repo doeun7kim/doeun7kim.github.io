@@ -5,15 +5,15 @@ description: "Academic homepage of Doeun Kim."
 hero_intro: true
 ---
 
-<section class="hero-intro" data-hero-intro data-duration="4300" aria-labelledby="hero-intro-title">
+<section class="hero-intro" data-hero-intro data-duration="4500" aria-labelledby="hero-intro-title">
   <canvas class="hero-intro-canvas" data-hero-canvas aria-hidden="true"></canvas>
   <div class="hero-intro-copy">
     <p class="hero-intro-kicker">Academic Homepage</p>
-    <h1 class="hero-intro-title" id="hero-intro-title" data-hero-title data-text="Hi, I'm Doeun Kim.">
-      <span class="hero-intro-title-base">Hi, I'm Doeun Kim.</span>
-      <span class="hero-intro-title-reveal" aria-hidden="true">Hi, I'm Doeun Kim.</span>
+    <h1 class="hero-intro-title" id="hero-intro-title" data-hero-title data-text="Hi! I'm Doeun Kim, an undergraduate researcher in causal machine learning.">
+      <span class="hero-intro-title-base">Hi! I'm Doeun Kim, an undergraduate researcher in causal machine learning.</span>
+      <span class="hero-intro-title-reveal" aria-hidden="true">Hi! I'm Doeun Kim, an undergraduate researcher in causal machine learning.</span>
     </h1>
-    <p class="hero-intro-subtitle">Undergraduate Researcher &middot; Causal Machine Learning &middot; Graph Representation Learning</p>
+    <p class="hero-intro-subtitle">Sogang University &middot; Causality Lab, SNU GSDS &middot; Graph Representation Learning</p>
     <p class="hero-intro-bio">I am an undergraduate student in Mathematics and Computer Science at Sogang University and an undergraduate researcher at the Causality Lab, Seoul National University Graduate School of Data Science.</p>
   </div>
 </section>
