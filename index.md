@@ -1,7 +1,7 @@
 ---
 layout: default
 title: About
-description: "Academic homepage of Doeun Kim."
+description: "Personal website of Doeun Kim."
 hero_intro: true
 ---
 
@@ -16,7 +16,6 @@ hero_intro: true
     <span class="hero-character-tool hero-character-lantern"></span>
   </div>
   <div class="hero-intro-copy">
-    <p class="hero-intro-kicker">Academic Homepage</p>
     <h1 class="hero-intro-title" id="hero-intro-title" data-hero-title>
       <span class="hero-intro-title-base">Hi! I'm <strong>Doeun Kim</strong>, and I study Mathematics and Computer Science at Sogang University.</span>
       <span class="hero-intro-title-reveal" aria-hidden="true">Hi! I'm <strong>Doeun Kim</strong>, and I study Mathematics and Computer Science at Sogang University.</span>
@@ -42,7 +41,7 @@ hero_intro: true
     </aside>
     <div>
       <h2>About</h2>
-      <p class="lead">I am interested in causal machine learning, causal foundation models, graph representation learning, and natural language processing. In particular, I study when foundation models can learn, use, or fail to use causal structure.</p>
+      <p class="lead">I am interested in causal machine learning, causal foundation models, and graph representation learning. In particular, I study when foundation models can learn, use, or fail to use causal structure.</p>
 
       <section class="section compact-section">
         <h2>Research Interests</h2>
@@ -50,7 +49,6 @@ hero_intro: true
           <li>Causal Machine Learning</li>
           <li>Causal Foundation Models</li>
           <li>Graph Representation Learning</li>
-          <li>Natural Language Processing</li>
         </ul>
       </section>
     </div>

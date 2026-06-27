@@ -106,20 +106,8 @@
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
 
-    ctx.strokeStyle = "rgba(15, 118, 110, 0.38)";
-    ctx.lineWidth = 1.35;
-    ctx.beginPath();
-    ctx.moveTo(sourceX, sourceY);
-    ctx.quadraticCurveTo(
-      sourceX + (targetX - sourceX) * 0.35,
-      sourceY + 20,
-      targetX,
-      targetY
-    );
-    ctx.stroke();
-
     ctx.fillStyle = "rgba(15, 118, 110, 0.48)";
-    for (var i = 0; i < 16; i += 1) {
+    for (var i = 0; i < 10; i += 1) {
       var phase = (tick * 0.85 + i * 0.16) % 1;
       var t = clamp(phase * 0.92 + 0.04, 0, 1);
       var wobble = Math.sin(tick * 5 + i * 1.7);
@@ -143,44 +131,6 @@
     ctx.beginPath();
     ctx.arc(targetX, targetY, spread, 0, Math.PI * 2);
     ctx.fill();
-
-    ctx.restore();
-  }
-
-  function drawSprouts(box, progress, fade) {
-    var count = 7;
-    var baseline = box.bottom + 16;
-
-    ctx.save();
-    ctx.globalAlpha = 0.65 * fade;
-    ctx.strokeStyle = "rgba(15, 118, 110, 0.42)";
-    ctx.fillStyle = "rgba(15, 118, 110, 0.4)";
-    ctx.lineWidth = 1;
-
-    for (var i = 0; i < count; i += 1) {
-      var threshold = (i + 1) / (count + 1);
-      var grow = clamp((progress - threshold) * 10, 0, 1);
-
-      if (grow <= 0) {
-        continue;
-      }
-
-      var x = box.left + box.width * threshold;
-      var stem = 5 + grow * 7;
-
-      ctx.beginPath();
-      ctx.moveTo(x, baseline);
-      ctx.lineTo(x, baseline - stem);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.ellipse(x - 3 * grow, baseline - stem * 0.66, 3 * grow, 1.6 * grow, -0.55, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.ellipse(x + 3 * grow, baseline - stem * 0.55, 3 * grow, 1.6 * grow, 0.55, 0, Math.PI * 2);
-      ctx.fill();
-    }
 
     ctx.restore();
   }
@@ -213,112 +163,21 @@
     ctx.restore();
   }
 
-  function drawCharacter(layout, mode, fade) {
-    var dark = mode === "dark";
-
-    ctx.save();
-    ctx.globalAlpha = 0.9 * fade;
-    ctx.translate(layout.x, layout.y);
-    ctx.scale(0.92, 0.92);
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-
-    ctx.fillStyle = dark ? "rgba(0, 0, 0, 0.24)" : "rgba(15, 23, 42, 0.12)";
-    ctx.beginPath();
-    ctx.ellipse(35, 104, 26, 6, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = dark ? "#94a3b8" : "#1f2937";
-    ctx.fillRect(25, 88, 8, 18);
-    ctx.fillRect(43, 88, 8, 18);
-
-    ctx.fillStyle = dark ? "#dbe7f5" : "#202a44";
-    ctx.beginPath();
-    ctx.moveTo(22, 49);
-    ctx.lineTo(52, 51);
-    ctx.lineTo(57, 91);
-    ctx.lineTo(18, 91);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.fillStyle = dark ? "rgba(15, 23, 42, 0.2)" : "rgba(255, 255, 255, 0.16)";
-    ctx.fillRect(28, 56, 18, 2);
-
-    ctx.fillStyle = "#f0c8ad";
-    ctx.beginPath();
-    ctx.arc(37, 33, 14, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = "#111827";
-    ctx.beginPath();
-    ctx.moveTo(20, 29);
-    ctx.quadraticCurveTo(29, 8, 51, 18);
-    ctx.quadraticCurveTo(56, 25, 50, 34);
-    ctx.quadraticCurveTo(37, 24, 24, 34);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.fillStyle = "rgba(23, 32, 51, 0.76)";
-    ctx.beginPath();
-    ctx.arc(32, 35, 1.7, 0, Math.PI * 2);
-    ctx.arc(43, 35, 1.7, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.strokeStyle = "#f0c8ad";
-    ctx.lineWidth = 6;
-    ctx.beginPath();
-    ctx.moveTo(51, 63);
-    ctx.lineTo(72, 58);
-    ctx.stroke();
-
-    if (dark) {
-      ctx.strokeStyle = "rgba(244, 211, 94, 0.84)";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(68, 50, 15, 22);
-      ctx.beginPath();
-      ctx.arc(75.5, 50, 5, Math.PI, 0);
-      ctx.stroke();
-      ctx.fillStyle = "rgba(255, 244, 189, 0.92)";
-      ctx.fillRect(73, 58, 5, 10);
-    } else {
-      ctx.fillStyle = "#8bc5bd";
-      ctx.strokeStyle = "rgba(15, 118, 110, 0.72)";
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      if (ctx.roundRect) {
-        ctx.roundRect(66, 53, 25, 18, 6);
-      } else {
-        ctx.rect(66, 53, 25, 18);
-      }
-      ctx.fill();
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(88, 58);
-      ctx.lineTo(108, 51);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(64, 62, 8, Math.PI * 0.56, Math.PI * 1.48);
-      ctx.stroke();
-    }
-
-    ctx.restore();
-  }
-
   function characterLayout(box, motion, mode) {
     var characterWidth = 70;
     var isNarrow = width < 560;
-    var startX = isNarrow ? box.left - 28 : box.left - 112;
-    var endX = Math.min(width - characterWidth - 4, box.right + 26);
+    var startX = isNarrow ? box.left + 8 : box.left + 10;
+    var endX = Math.min(width - characterWidth - 4, box.right - 76);
     var x = startX + (endX - startX) * motion;
-    var y = clamp(box.bottom + 8, 58, Math.max(58, height - 112));
+    var y = clamp(box.top - 70, 16, Math.max(16, height - 92));
 
     return {
       x: x,
       y: y,
-      wateringX: x + 80,
-      wateringY: y + 54,
-      lanternX: x + 68,
-      lanternY: y + 64
+      wateringX: x + 58,
+      wateringY: y + 34,
+      lanternX: x + 46,
+      lanternY: y + 38
     };
   }
 
@@ -363,10 +222,7 @@
       );
     } else {
       drawWater(layout.wateringX, layout.wateringY, revealX, targetY, reveal, raw * 5, fade);
-      drawSprouts(box, reveal, fade);
     }
-
-    drawCharacter(layout, mode, fade);
 
     if (raw < 1) {
       frameId = window.requestAnimationFrame(draw);

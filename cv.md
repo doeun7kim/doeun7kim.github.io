@@ -27,7 +27,6 @@ permalink: /cv/
       </div>
       <p class="role">B.S. in Mathematics and Computer Science, Seoul, South Korea</p>
       <ul class="detail-list">
-        <li>GPA: 4.16 / 4.30</li>
         <li>Current: 7th semester</li>
         <li>Leave of Absence: Mandatory military service, Oct 2022 - Apr 2024</li>
       </ul>
