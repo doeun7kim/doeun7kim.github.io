@@ -16,14 +16,10 @@ nav:
     url: "/"
   - title: "Research"
     url: "/research/"
-  - title: "Workshop Papers"
-    url: "/workshop-papers/"
   - title: "Projects"
     url: "/projects/"
   - title: "CV"
     url: "/cv/"
-  - title: "Contact"
-    url: "/contact/"
 
 exclude:
   - "Gemfile"

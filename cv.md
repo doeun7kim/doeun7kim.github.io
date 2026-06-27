@@ -7,10 +7,14 @@ permalink: /cv/
 
 <h1 class="page-title">CV</h1>
 
-<section class="section">
-  <p>Doeun Kim is an undergraduate student in Mathematics and Computer Science at Sogang University and an undergraduate researcher at the Causality Lab, Seoul National University Graduate School of Data Science, advised by Prof. Sanghack Lee.</p>
-  <p><a class="download-link" href="{{ '/assets/pdf/CV_Doeun_Kim.pdf' | relative_url }}">Download CV (PDF)</a></p>
-  <p class="notice">To update the downloadable file, replace <code>assets/pdf/CV_Doeun_Kim.pdf</code> with the latest CV PDF.</p>
+<section class="cv-download-section">
+  <a class="cv-download-card" href="{{ '/assets/pdf/CV_Doeun_Kim.pdf' | relative_url }}">
+    <span class="cv-pdf-icon" aria-hidden="true">PDF</span>
+    <span>
+      <strong>Download CV</strong>
+      <span>CV_Doeun_Kim.pdf</span>
+    </span>
+  </a>
 </section>
 
 <section class="section">
@@ -54,14 +58,6 @@ permalink: /cv/
       <p class="role">Intern, advised by Prof. Jay-Yoon Lee</p>
     </li>
   </ul>
-</section>
-
-<section class="section">
-  <h2>Workshop Papers</h2>
-  <ol class="plain-list">
-    <li>A Structural View of Query Misspecification in Causal Foundation Models. ICML 2026 Workshop on Structured Probabilistic Inference &amp; Generative Modeling, 2026.</li>
-    <li>Causal Foundation Models Perform Better without Post-treatment Variables. ICML 2026 Workshop on Foundation Models for Structured Data, 2026.</li>
-  </ol>
 </section>
 
 <section class="section">
