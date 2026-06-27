@@ -33,6 +33,11 @@
     return;
   }
 
+  if (hero.getAttribute("data-hero-static") === "true") {
+    setFinalState();
+    return;
+  }
+
   var ctx = canvas.getContext("2d", { alpha: true });
 
   if (!ctx) {
