@@ -208,12 +208,105 @@
     ctx.restore();
   }
 
-  function characterLayout(box, motion) {
+  function drawCharacter(layout, mode, fade) {
+    var dark = mode === "dark";
+
+    ctx.save();
+    ctx.globalAlpha = 0.9 * fade;
+    ctx.translate(layout.x, layout.y);
+    ctx.scale(0.92, 0.92);
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    ctx.fillStyle = dark ? "rgba(0, 0, 0, 0.24)" : "rgba(15, 23, 42, 0.12)";
+    ctx.beginPath();
+    ctx.ellipse(35, 104, 26, 6, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = dark ? "#94a3b8" : "#1f2937";
+    ctx.fillRect(25, 88, 8, 18);
+    ctx.fillRect(43, 88, 8, 18);
+
+    ctx.fillStyle = dark ? "#dbe7f5" : "#202a44";
+    ctx.beginPath();
+    ctx.moveTo(22, 49);
+    ctx.lineTo(52, 51);
+    ctx.lineTo(57, 91);
+    ctx.lineTo(18, 91);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = dark ? "rgba(15, 23, 42, 0.2)" : "rgba(255, 255, 255, 0.16)";
+    ctx.fillRect(28, 56, 18, 2);
+
+    ctx.fillStyle = "#f0c8ad";
+    ctx.beginPath();
+    ctx.arc(37, 33, 14, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#111827";
+    ctx.beginPath();
+    ctx.moveTo(20, 29);
+    ctx.quadraticCurveTo(29, 8, 51, 18);
+    ctx.quadraticCurveTo(56, 25, 50, 34);
+    ctx.quadraticCurveTo(37, 24, 24, 34);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = "rgba(23, 32, 51, 0.76)";
+    ctx.beginPath();
+    ctx.arc(32, 35, 1.7, 0, Math.PI * 2);
+    ctx.arc(43, 35, 1.7, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = "#f0c8ad";
+    ctx.lineWidth = 6;
+    ctx.beginPath();
+    ctx.moveTo(51, 63);
+    ctx.lineTo(72, 58);
+    ctx.stroke();
+
+    if (dark) {
+      ctx.strokeStyle = "rgba(244, 211, 94, 0.84)";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(68, 50, 15, 22);
+      ctx.beginPath();
+      ctx.arc(75.5, 50, 5, Math.PI, 0);
+      ctx.stroke();
+      ctx.fillStyle = "rgba(255, 244, 189, 0.92)";
+      ctx.fillRect(73, 58, 5, 10);
+    } else {
+      ctx.fillStyle = "#8bc5bd";
+      ctx.strokeStyle = "rgba(15, 118, 110, 0.72)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      if (ctx.roundRect) {
+        ctx.roundRect(66, 53, 25, 18, 6);
+      } else {
+        ctx.rect(66, 53, 25, 18);
+      }
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(88, 58);
+      ctx.lineTo(108, 51);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(64, 62, 8, Math.PI * 0.56, Math.PI * 1.48);
+      ctx.stroke();
+    }
+
+    ctx.restore();
+  }
+
+  function characterLayout(box, motion, mode) {
     var characterWidth = 70;
     var startX = box.left - 112;
     var endX = Math.min(width - characterWidth - 4, box.right + 26);
     var x = startX + (endX - startX) * motion;
-    var y = clamp(box.bottom - 78, 38, Math.max(38, height - 122));
+    var y = mode === "dark"
+      ? clamp(box.top + 16, 34, Math.max(34, height - 122))
+      : clamp(box.bottom - 36, 48, Math.max(48, height - 122));
 
     return {
       x: x,
@@ -244,10 +337,11 @@
     var motion = easeInOut(clamp(raw / 0.96, 0, 1));
     var reveal = clamp((easeOut(raw) - 0.035) / 0.9, 0, 1);
     var fade = raw > 0.9 ? clamp((1 - raw) / 0.1, 0, 1) : 1;
+    var mode = currentMode();
     var box = titleBox();
-    var layout = characterLayout(box, motion);
+    var layout = characterLayout(box, motion, mode);
     var revealX = box.left + box.width * reveal;
-    var targetY = Math.min(box.bottom + 8, layout.wateringY + 44);
+    var targetY = Math.min(box.bottom + 16, layout.wateringY + 44);
 
     hero.style.setProperty("--hero-reveal", Math.round(reveal * 100) + "%");
     hero.style.setProperty("--hero-person-x", Math.round(layout.x) + "px");
@@ -255,7 +349,7 @@
 
     ctx.clearRect(0, 0, width, height);
 
-    if (currentMode() === "dark") {
+    if (mode === "dark") {
       drawSpotlight(
         layout.lanternX,
         layout.lanternY,
@@ -267,6 +361,8 @@
       drawWater(layout.wateringX, layout.wateringY, revealX, targetY, reveal, raw * 5, fade);
       drawSprouts(box, reveal, fade);
     }
+
+    drawCharacter(layout, mode, fade);
 
     if (raw < 1) {
       frameId = window.requestAnimationFrame(draw);
