@@ -40,7 +40,7 @@ a:focus {
 }
 
 .container {
-  width: min(var(--max-width), calc(100% - 32px));
+  width: min(var(--max-width), calc(100vw - 32px));
   margin: 0 auto;
 }
 
@@ -332,6 +332,8 @@ code {
   }
 
   .site-nav {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
     justify-content: flex-start;
     gap: 4px 14px;
     width: 100%;
@@ -376,11 +378,11 @@ code {
 
 @media (max-width: 420px) {
   .container {
-    width: min(var(--max-width), calc(100% - 24px));
+    width: min(var(--max-width), calc(100vw - 24px));
   }
 
   .site-nav {
-    gap: 2px 11px;
+    gap: 2px 10px;
   }
 
   .nav-link {

@@ -133,10 +133,15 @@
   .hero-intro-subtitle,
   .hero-intro-bio {
     max-width: 100%;
+    width: min(100%, calc(100vw - 32px));
   }
 
   .hero-intro.hero-intro--active .hero-intro-title-reveal {
-    white-space: normal;
+    display: none;
+  }
+
+  .hero-intro.hero-intro--active .hero-intro-title-base {
+    color: var(--text);
   }
 
   .hero-intro-subtitle {
