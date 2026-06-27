@@ -172,9 +172,10 @@
 
   function characterLayout(box, motion, mode) {
     var characterWidth = 70;
+    var wateringOffset = 58;
     var isNarrow = width < 560;
     var startX = isNarrow ? box.left + 8 : box.left + 10;
-    var endX = Math.min(width - characterWidth - 4, box.right - 76);
+    var endX = Math.min(width - characterWidth - 4, box.right - wateringOffset);
     var x = startX + (endX - startX) * motion;
     var y = clamp(box.top - 70, 16, Math.max(16, height - 92));
 
@@ -204,21 +205,25 @@
     }
 
     var raw = clamp((timestamp - startedAt) / duration, 0, 1);
-    var motion = easeInOut(clamp((raw * characterSpeed) / 0.96, 0, 1));
+    var mode = currentMode();
+    var waterImpact = clamp(((raw - 0.06) * waterSpeed) / 0.46, 0, 1);
+    var motion = mode === "light"
+      ? waterImpact
+      : easeInOut(clamp((raw * characterSpeed) / 0.96, 0, 1));
     var revealInput = clamp(raw * revealSpeed, 0, 1);
     var reveal = clamp((easeOut(revealInput) - 0.035) / 0.9, 0, 1);
     var fade = raw > 0.9 ? clamp((1 - raw) / 0.1, 0, 1) : 1;
-    var mode = currentMode();
     var box = titleBox();
     var layout = characterLayout(box, motion, mode);
     var revealX = box.left + box.width * reveal;
-    var waterTargetX = layout.wateringX + clamp(width * 0.028, 12, 26);
-    var waterTargetY = layout.wateringY + clamp(height * 0.13, 20, 32);
-    var waterImpact = clamp(((raw - 0.06) * waterSpeed) / 0.46, 0, 1);
+    var waterTargetX = clamp(layout.wateringX + 10, box.left, box.right);
+    var waterTargetY = box.centerY;
 
     if (mode === "light") {
-      reveal = waterImpact;
-      revealX = box.left + box.width * reveal;
+      reveal = waterImpact > 0.01
+        ? clamp((waterTargetX - box.left) / Math.max(1, box.width), 0, 1)
+        : 0;
+      revealX = waterTargetX;
     }
 
     hero.style.setProperty("--hero-reveal", Math.round(reveal * 100) + "%");
