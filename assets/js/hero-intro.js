@@ -163,6 +163,9 @@
 
       var x = box.left + box.width * threshold;
       var grow = clamp((progress - threshold) * 10, 0, 1);
+      if (grow < 0.08) {
+        continue;
+      }
       var stem = 5 + grow * 7;
 
       ctx.beginPath();
@@ -171,10 +174,10 @@
       ctx.stroke();
 
       ctx.beginPath();
-      ctx.ellipse(x - 3 * grow, baseline - stem * 0.72, 3 * grow, 1.7 * grow, -0.5, 0, Math.PI * 2);
+      ctx.ellipse(x - 3 * grow, baseline - stem * 0.72, Math.max(0.5, 3 * grow), Math.max(0.5, 1.7 * grow), -0.5, 0, Math.PI * 2);
       ctx.fill();
       ctx.beginPath();
-      ctx.ellipse(x + 3 * grow, baseline - stem * 0.58, 3 * grow, 1.7 * grow, 0.5, 0, Math.PI * 2);
+      ctx.ellipse(x + 3 * grow, baseline - stem * 0.58, Math.max(0.5, 3 * grow), Math.max(0.5, 1.7 * grow), 0.5, 0, Math.PI * 2);
       ctx.fill();
     }
 
@@ -297,10 +300,13 @@
         drawSpotlight(handX, handY, revealX, box.y, endFade);
       } else {
         drawWater(handX + scale * 0.32, handY - scale * 0.06, revealX, box.bottom + 2, reveal, raw * 3.2, endFade);
-        drawSprouts(box, reveal, endFade);
       }
 
       drawCharacter(charX, groundY, scale, raw * 2.8, endFade);
+
+      if (mode === "light") {
+        drawSprouts(box, reveal, endFade);
+      }
 
       if (raw < 1) {
         frameId = window.requestAnimationFrame(draw);
