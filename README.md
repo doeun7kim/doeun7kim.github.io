@@ -19,7 +19,7 @@ The September 2026 update is based on the latest `CV/main.tex` and `CV/main.pdf`
 
 - `_data/profile.yml`: education, interests, research experience, honors, academic service, and skills.
 - `_data/publications.yml`: workshop titles, author order and contribution marks, venues, and paper links.
-- `_data/projects.yml`: project descriptions, dates, topics, and homepage highlights. The first three projects appear on the homepage.
+- `_data/projects.yml`: project descriptions, dates, and topics for the Projects page.
 - `assets/pdf/CV_Doeun_Kim.pdf`: the downloadable CV. Replace this with the latest compiled PDF, then update `cv_updated` in `_config.yml`.
 
 The home, research, projects, CV, and search views reuse this data. Keep the data and PDF synchronized when updating the CV. Local CV sources, review archives, transcripts, and temporary files are excluded from the published site.

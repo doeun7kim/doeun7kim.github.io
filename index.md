@@ -35,24 +35,10 @@ body_class: home
   <p class="fine-print">* Equal contribution. † Corresponding author. Both papers are non-archival workshop posters.</p>
 </section>
 
-<section class="home-section" aria-labelledby="selected-projects">
-  <div class="section-heading"><div><p class="eyebrow">02 / Selected projects</p><h2 id="selected-projects">From ideas to implementation.</h2></div><a class="text-link" href="{{ '/projects/' | relative_url }}">All projects <span aria-hidden="true">↗</span></a></div>
-  <div class="project-preview-grid">
-    {% for project in site.data.projects limit:3 %}
-    <a class="project-preview" href="{{ '/projects/' | relative_url }}#{{ project.id }}">
-      <div class="project-preview-top"><span class="project-index">0{{ forloop.index }}</span><span class="small-arrow" aria-hidden="true">↗</span></div>
-      <p class="eyebrow">{{ project.category_label }}</p><h3>{{ project.short_title }}</h3><p>{{ project.summary }}</p>
-      <div class="project-metric"><strong>{{ project.metric }}</strong><span>{{ project.metric_label }}</span></div>
-      <span class="project-period">{{ project.period }}</span>
-    </a>
-    {% endfor %}
-  </div>
-</section>
-
 <section class="home-section background-section" aria-labelledby="background-title">
-  <div><p class="eyebrow">03 / Background</p><h2 id="background-title">Learning,<br>with purpose.</h2><p class="section-intro">A foundation in mathematics and computer science, with a growing focus on causal machine learning.</p><a class="text-link" href="{{ '/cv/' | relative_url }}">View my full CV <span aria-hidden="true">↗</span></a></div>
+  <div><p class="eyebrow">02 / Background</p><h2 id="background-title">Learning,<br>with purpose.</h2><p class="section-intro">A foundation in mathematics and computer science, with a growing focus on causal machine learning.</p><a class="text-link" href="{{ '/cv/' | relative_url }}">View my full CV <span aria-hidden="true">↗</span></a></div>
   <div class="background-entries">
-    <article class="background-entry"><span class="timeline-dot" aria-hidden="true"></span><p class="entry-date">{{ profile.education.period }}</p><h3>{{ profile.education.institution }}</h3><p>{{ profile.education.degree }}</p><div class="inline-facts"><span>GPA <strong>{{ profile.education.gpa }}</strong></span><span>Expected <strong>{{ profile.education.graduation }}</strong></span></div></article>
+    <article class="background-entry"><span class="timeline-dot" aria-hidden="true"></span><p class="entry-date">{{ profile.education.period }}</p><h3>{{ profile.education.institution }}</h3><p>{{ profile.education.degree }}</p><div class="inline-facts"><span>Expected <strong>{{ profile.education.graduation }}</strong></span></div></article>
     {% for experience in profile.research_experience %}<article class="background-entry"><span class="timeline-dot" aria-hidden="true"></span><p class="entry-date">{{ experience.period }}</p><h3>{{ experience.lab }}</h3><p>{{ experience.role }} · {{ experience.institution }}</p><p class="entry-advisor">Advisor: {{ experience.advisor }}</p></article>{% endfor %}
   </div>
 </section>
