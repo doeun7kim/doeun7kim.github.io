@@ -36,10 +36,33 @@ body_class: home
 </section>
 
 <section class="home-section background-section" aria-labelledby="background-title">
-  <div><p class="eyebrow">02 / Background</p><h2 id="background-title">Learning,<br>with purpose.</h2><p class="section-intro">A foundation in mathematics and computer science, with a growing focus on causal machine learning.</p><a class="text-link" href="{{ '/cv/' | relative_url }}">View my full CV <span aria-hidden="true">↗</span></a></div>
-  <div class="background-entries">
-    <article class="background-entry"><span class="timeline-dot" aria-hidden="true"></span><p class="entry-date">{{ profile.education.period }}</p><h3>{{ profile.education.institution }}</h3><p>{{ profile.education.degree }}</p><div class="inline-facts"><span>Expected <strong>{{ profile.education.graduation }}</strong></span></div></article>
-    {% for experience in profile.research_experience %}<article class="background-entry"><span class="timeline-dot" aria-hidden="true"></span><p class="entry-date">{{ experience.period }}</p><h3>{{ experience.lab }}</h3><p>{{ experience.role }} · {{ experience.institution }}</p><p class="entry-advisor">Advisor: {{ experience.advisor }}</p></article>{% endfor %}
+  <div class="section-heading">
+    <div><p class="eyebrow">02 / Background</p><h2 id="background-title">Education &amp; research.</h2></div>
+    <a class="text-link" href="{{ '/cv/' | relative_url }}">View my full CV <span aria-hidden="true">&#8599;</span></a>
+  </div>
+  <p class="background-intro">Alongside my studies at Sogang University, I conduct research at SNU&rsquo;s Causality Lab.</p>
+  <div class="background-grid">
+    <section class="background-group" aria-labelledby="background-education-title">
+      <h3 id="background-education-title">Education</h3>
+      <article class="background-entry">
+        <div class="background-entry-heading"><h4>{{ profile.education.institution }}</h4><span class="background-status">Currently enrolled</span></div>
+        <p class="entry-date">{{ profile.education.period }}</p>
+        <p>{{ profile.education.degree }}</p>
+        <p class="background-graduation">Expected graduation: <strong>{{ profile.education.graduation }}</strong></p>
+      </article>
+    </section>
+    <section class="background-group" aria-labelledby="background-research-title">
+      <h3 id="background-research-title">Research experience</h3>
+      {% for experience in profile.research_experience %}
+      <article class="background-entry">
+        <div class="background-entry-heading"><h4>{{ experience.lab }}</h4>{% if experience.period contains 'Present' %}<span class="background-status">Current role</span>{% else %}<span class="background-status background-status-past">Past role</span>{% endif %}</div>
+        <p class="entry-date">{{ experience.period }}</p>
+        <p class="background-role">{{ experience.role }}</p>
+        <p>{{ experience.institution }}</p>
+        <p class="entry-advisor">Advisor: {{ experience.advisor }}</p>
+      </article>
+      {% endfor %}
+    </section>
   </div>
 </section>
 
