@@ -5,72 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
       (function () {
-        var saved = null;
-        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-        try {
-          saved = localStorage.getItem("theme");
-        } catch (error) {
-          saved = null;
-        }
-        document.documentElement.setAttribute("data-theme", saved || (prefersDark ? "dark" : "light"));
+        var saved;
+        try { saved = localStorage.getItem("theme"); } catch (error) {}
+        var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", saved === "dark" || saved === "light" ? saved : (dark ? "dark" : "light"));
       }());
     </script>
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-    <meta name="description" content="{{ page.description | default: site.description }}">
+    <title>{% if page.title != 'About' %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
+    <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    <meta name="theme-color" content="#f7f7f2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#171f1b" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ site.title | escape }}">
+    <meta property="og:title" content="{% if page.title != 'About' %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}">
+    <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ '/assets/img/profile.jpg' | absolute_url }}">
+    <meta property="og:image:alt" content="Portrait of Doeun Kim">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{% if page.title != 'About' %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}">
+    <meta name="twitter:description" content="{{ page.description | default: site.description | escape }}">
+    <meta name="twitter:image" content="{{ '/assets/img/profile.jpg' | absolute_url }}">
+    <link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-    {% if page.hero_intro %}
-    <link rel="stylesheet" href="{{ '/assets/css/hero-intro.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-    {% endif %}
   </head>
-  <body>
+  <body class="{{ page.body_class }}">
     <a class="skip-link" href="#main">Skip to content</a>
-
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-        <div class="header-actions">
-          <nav class="site-nav" aria-label="Primary navigation">
-            {% assign current_url = page.url | replace: 'index.html', '' %}
-            {% for item in site.nav %}
-              <a class="nav-link{% if current_url == item.url %} active{% endif %}" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-            {% endfor %}
-          </nav>
-          <button class="search-trigger" type="button" data-search-open title="Search">
-            <span>Search</span>
-            <kbd>Ctrl K</kbd>
-          </button>
-          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
-            <span class="theme-toggle-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-      </div>
-    </header>
-
-    <main id="main" class="page-content">
-      <div class="container">
-        {{ content }}
-      </div>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <span>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}</span>
-        <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
-      </div>
-    </footer>
-    <div class="search-modal" data-search-modal hidden>
-      <div class="search-panel" role="dialog" aria-modal="true" aria-label="Site search">
-        <div class="search-box">
-          <input type="search" data-search-input placeholder="Search Doeun Kim's site" autocomplete="off">
-          <button type="button" data-search-close aria-label="Close search">Close</button>
-        </div>
-        <div class="search-results" data-search-results></div>
-      </div>
-    </div>
+    <header class="site-header"><div class="container header-inner">
+      <a class="site-title" href="{{ '/' | relative_url }}"><span class="site-monogram" aria-hidden="true">dk.</span><span>{{ site.title }}</span></a>
+      <nav class="site-nav" aria-label="Primary navigation">{% assign current_url = page.url | replace: 'index.html', '' %}{% for item in site.nav %}<a class="nav-link{% if current_url == item.url %} active{% endif %}" href="{{ item.url | relative_url }}"{% if current_url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>{% endfor %}</nav>
+      <div class="header-tools"><button class="icon-button search-trigger" type="button" data-search-open aria-label="Search this site" aria-haspopup="dialog" title="Search (Ctrl / ⌘ K)" hidden>{% include icon.html name="search" %}</button><button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme" hidden><span class="theme-moon">{% include icon.html name="moon" %}</span><span class="theme-sun">{% include icon.html name="sun" %}</span></button></div>
+    </div></header>
+    <main id="main" class="page-content" tabindex="-1"><div class="container">{{ content }}</div></main>
+    <footer class="site-footer"><div class="container footer-inner"><div><a class="footer-name" href="{{ '/' | relative_url }}">Doeun Kim<span class="accent-period">.</span></a><p>Mathematics, computer science &amp; a little curiosity.</p></div><div class="footer-right"><a href="mailto:{{ site.author.email }}">Say hello <span aria-hidden="true">↗</span></a><span>© {{ site.time | date: '%Y' }} {{ site.author.name }} · Seoul, South Korea</span></div></div></footer>
+    <dialog class="search-modal" data-search-modal aria-labelledby="search-title" data-search-index="{{ '/search.json' | relative_url }}">
+      <div class="search-panel"><div class="search-heading"><h2 id="search-title">Find something.</h2><button class="search-close" type="button" data-search-close aria-label="Close search">Esc <span aria-hidden="true">×</span></button></div><label class="sr-only" for="site-search">Search research, projects, and CV</label><div class="search-box">{% include icon.html name="search" %}<input id="site-search" type="search" data-search-input placeholder="Research, projects, education…" autocomplete="off" autofocus></div><p class="search-status" data-search-status role="status" aria-live="polite"></p><div class="search-results" data-search-results></div><p class="search-hint">Tab to explore · Enter to open · Esc to close</p></div>
+    </dialog>
     <script src="{{ '/assets/js/theme-toggle.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
     <script src="{{ '/assets/js/search.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
-    {% if page.hero_intro %}
-    <script src="{{ '/assets/js/hero-intro.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
-    {% endif %}
+    <script src="{{ '/assets/js/projects.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
   </body>
 </html>

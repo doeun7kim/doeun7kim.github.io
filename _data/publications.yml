@@ -1,0 +1,24 @@
+- id: query-misspecification
+  title: A Structural View of Query Misspecification in Causal Foundation Models
+  venue: ICML 2026 SPIGM Workshop
+  venue_full: Workshop on Structured Probabilistic Inference & Generative Modeling
+  year: 2026
+  url: https://openreview.net/forum?id=HZ2mgJ8OJs
+  authors:
+    - {name: Junha Ham, mark: '*'}
+    - {name: Deokgyu Kim, mark: '*'}
+    - {name: Doeun Kim, mark: '*'}
+    - {name: Serjin Kim, mark: '*'}
+    - {name: Sanghack Lee, mark: '†'}
+- id: post-treatment-variables
+  title: Causal Foundation Models Perform Better without Post-treatment Variables
+  venue: ICML 2026 FMSD Workshop
+  venue_full: Workshop on Foundation Models for Structured Data
+  year: 2026
+  url: https://openreview.net/forum?id=ULoLF1aOo1
+  authors:
+    - {name: Junha Ham, mark: '*'}
+    - {name: Deokgyu Kim, mark: '*'}
+    - {name: Doeun Kim, mark: '*'}
+    - {name: Serjin Kim, mark: '*'}
+    - {name: Sanghack Lee, mark: '†'}

@@ -1,0 +1,7 @@
+<article class="paper-card{% if include.compact %} paper-card-compact{% endif %}"{% unless include.compact %} id="{{ paper.id }}"{% endunless %}>
+  <div class="paper-meta"><span class="venue-label">{{ paper.venue }}</span><span class="paper-type">Poster · Non-archival</span></div>
+  <h3><a href="{{ paper.url }}">{{ paper.title }}</a></h3>
+  <p class="paper-authors">{% include authors.html %}</p>
+  {% unless include.compact %}<p class="paper-venue-full">{{ paper.venue_full }}</p>{% endunless %}
+  <a class="text-link paper-link" href="{{ paper.url }}" aria-label="Read {{ paper.title | escape }} on OpenReview">Read paper <span aria-hidden="true">↗</span></a>
+</article>

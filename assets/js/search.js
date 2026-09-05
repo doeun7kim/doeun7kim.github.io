@@ -1,135 +1,77 @@
 (function () {
   "use strict";
-
-  var openButton = document.querySelector("[data-search-open]");
+  var trigger = document.querySelector("[data-search-open]");
   var modal = document.querySelector("[data-search-modal]");
-  var input = document.querySelector("[data-search-input]");
-  var closeButton = document.querySelector("[data-search-close]");
-  var results = document.querySelector("[data-search-results]");
-
-  if (!openButton || !modal || !input || !closeButton || !results) {
-    return;
-  }
-
-  var pages = [
-    {
-      title: "About",
-      url: "/",
-      summary: "Homepage, profile, location, email, current position, research interests.",
-      text: "Doeun Kim Mathematics Computer Science Sogang University Causality Lab Seoul causal machine learning causal foundation models graph representation learning natural language processing"
-    },
-    {
-      title: "Research",
-      url: "/research/",
-      summary: "Publications and workshop papers.",
-      text: "publications ICML 2026 query misspecification causal foundation models post-treatment variables structured probabilistic inference generative modeling foundation models structured data"
-    },
-    {
-      title: "Projects",
-      url: "/projects/",
-      summary: "Selected academic and technical projects.",
-      text: "projects Do-PFN FA-AL-MOT DIGIRO GPT-2 RAG object detection graph representation learning transformer retrieval augmented generation"
-    },
-    {
-      title: "CV",
-      url: "/cv/",
-      summary: "Downloadable CV, education, experience, awards, service, and skills.",
-      text: "CV PDF education research experience Sogang University Causality Lab SNU GSDS teaching service scholarships awards skills Python C++ MATLAB SAS MySQL"
-    }
-  ];
-
-  function normalize(value) {
-    return value.toLowerCase().trim();
-  }
-
-  function escapeHtml(value) {
-    return value.replace(/[&<>"']/g, function (character) {
-      return {
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      }[character];
+  if (!trigger || !modal || typeof modal.showModal !== "function") return;
+  var input = modal.querySelector("[data-search-input]");
+  var results = modal.querySelector("[data-search-results]");
+  var status = modal.querySelector("[data-search-status]");
+  var pages = null;
+  var pending = null;
+  var previousFocus;
+  trigger.hidden = false;
+  function render() {
+    results.replaceChildren();
+    if (!pages) return;
+    var terms = input.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    var matches = terms.length ? pages.filter(function (page) {
+      var text = (page.title + " " + page.summary + " " + page.text).toLowerCase();
+      return terms.every(function (term) { return text.indexOf(term) !== -1; });
+    }) : pages.slice(0, 4);
+    status.textContent = terms.length ? (matches.length ? matches.length + " result" + (matches.length === 1 ? "" : "s") : "No results. Try a project name, topic, or skill.") : "Explore the site";
+    matches.forEach(function (page) {
+      var link = document.createElement("a");
+      link.className = "search-result";
+      link.href = page.url;
+      var title = document.createElement("strong");
+      title.textContent = page.title;
+      var description = document.createElement("span");
+      description.textContent = page.summary;
+      link.append(title, description);
+      results.appendChild(link);
     });
   }
-
-  function resultMarkup(items, query) {
-    if (!items.length) {
-      return '<p class="search-result-empty">No results for "' + escapeHtml(query) + '".</p>';
-    }
-
-    return items.map(function (item) {
-      return '<a class="search-result" href="' + item.url + '">' +
-        "<strong>" + item.title + "</strong>" +
-        "<span>" + item.summary + "</span>" +
-        "</a>";
-    }).join("");
+  function loadIndex() {
+    if (pages) { render(); return; }
+    if (pending) return;
+    status.textContent = "Loading search…";
+    pending = fetch(modal.dataset.searchIndex).then(function (response) {
+      if (!response.ok) throw new Error("Search unavailable");
+      return response.json();
+    }).then(function (data) {
+      pages = data;
+      render();
+    }).catch(function () {
+      status.textContent = "Search is unavailable right now. Close and reopen to retry, or use the navigation above.";
+    }).finally(function () { pending = null; });
   }
-
-  function render() {
-    var query = normalize(input.value);
-    var terms = query.split(/\s+/).filter(Boolean);
-    var items = pages;
-
-    if (terms.length) {
-      items = pages.filter(function (item) {
-        var haystack = normalize(item.title + " " + item.summary + " " + item.text);
-        return terms.every(function (term) {
-          return haystack.indexOf(term) !== -1;
-        });
-      });
-    }
-
-    results.innerHTML = resultMarkup(items, input.value.trim());
-  }
-
-  function openSearch() {
-    modal.hidden = false;
+  function open() {
+    if (modal.open) { input.focus(); return; }
+    previousFocus = document.activeElement;
     input.value = "";
-    render();
-    window.setTimeout(function () {
-      input.focus();
-    }, 0);
+    modal.showModal();
+    document.body.classList.add("search-is-open");
+    input.focus();
+    loadIndex();
   }
-
-  function closeSearch() {
-    modal.hidden = true;
-    openButton.focus();
-  }
-
-  openButton.addEventListener("click", openSearch);
-  closeButton.addEventListener("click", closeSearch);
+  trigger.addEventListener("click", open);
+  modal.querySelector("[data-search-close]").addEventListener("click", function () { modal.close(); });
   input.addEventListener("input", render);
-
-  results.addEventListener("click", function (event) {
-    var target = event.target && event.target.nodeType === 3
-      ? event.target.parentNode
-      : event.target;
-
-    if (target && target.closest && target.closest("a")) {
-      modal.hidden = true;
-    }
+  modal.addEventListener("click", function (event) { if (event.target === modal) modal.close(); });
+  modal.addEventListener("close", function () {
+    document.body.classList.remove("search-is-open");
+    if (previousFocus && previousFocus.isConnected) previousFocus.focus({ preventScroll: true });
   });
-
-  modal.addEventListener("click", function (event) {
-    if (event.target === modal) {
-      closeSearch();
-    }
-  });
-
+  results.addEventListener("click", function (event) { if (event.target.closest("a")) modal.close(); });
   document.addEventListener("keydown", function (event) {
-    var key = event.key.toLowerCase();
-    var wantsSearch = key === "k" && (event.ctrlKey || event.metaKey);
-
-    if (wantsSearch) {
+    if (event.key === "Escape" && modal.open) {
       event.preventDefault();
-      openSearch();
+      modal.close();
       return;
     }
-
-    if (key === "escape" && !modal.hidden) {
-      closeSearch();
+    if (event.key.toLowerCase() === "k" && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault();
+      open();
     }
   });
 }());

@@ -1,0 +1,107 @@
+- id: julaengrang
+  title: 'Julaengrang: Subway Crowding Avoidance with ML & Pareto Optimization'
+  short_title: A less crowded commute.
+  summary: Station-specific ML forecasts and Pareto optimization for subway crowding avoidance.
+  period: Summer 2026
+  category: ml
+  category_label: Machine learning
+  metric: '91'
+  metric_label: station–wait options
+  tags: [Machine learning, Pareto optimization, Urban mobility]
+  details:
+    - Built an ML-based station-avoidance service to address unavailable real-time crowding data, training station-specific models on five-minute observations across 7 stations to forecast passenger inflow and crowding probabilities.
+    - Combined ML forecasts with route estimates and Pareto optimization to compare 91 station–wait options by crowding, travel time, walking, and transfers.
+- id: interactive-3d-graphics
+  title: Interactive 3D Graphics System with OpenGL & GLSL
+  short_title: A scene from every angle.
+  summary: An interactive 3D world with multi-camera navigation, animation, and custom shaders.
+  period: Spring 2026
+  category: systems
+  category_label: Computer graphics
+  metric: '7'
+  metric_label: CCTV viewpoints
+  tags: [C++, OpenGL, GLSL, Computer graphics]
+  details:
+    - Developed an interactive 3D scene with multi-camera navigation, Catmull–Rom motion, animated-object tracking, and a seven-view CCTV interface using C++ and OpenGL.
+    - Implemented Phong lighting, texture mapping, alpha blending, dynamic objects, and custom GLSL effects including a holographic Menger cube and spiral image transition.
+- id: nyc-airbnb
+  title: Statistical Modeling of NYC Airbnb Prices
+  short_title: What shapes a stay’s price?
+  summary: Statistical modeling of NYC Airbnb listings to understand the drivers of rental prices.
+  period: Spring 2026
+  category: data
+  category_label: Data analysis
+  metric: '19,995'
+  metric_label: cases analyzed
+  tags: [SAS, Regression, ANOVA, Statistical modeling]
+  details:
+    - Analyzed NYC Airbnb listings in SAS, engineering price, availability, property, and host features and applying hypothesis tests, categorical data analysis, ANOVA, and regression diagnostics.
+    - Built and compared multiple-regression and variable-selection models on 19,995 cases; the full model explained 41.59% of log-price variance and identified guest capacity, borough, and room type as the strongest predictors.
+- id: do-pfn
+  title: Do-PFN Really Do Causality?
+  period: Fall 2025
+  category: ml
+  category_label: Causal machine learning
+  tags: [Causal reasoning, Foundation models, PFNs]
+  details:
+    - Collaborated with Causality Lab interns on a research project examining whether Do-PFN/PFN-style models exhibit causal reasoning behavior.
+- id: fa-al-mot
+  title: 'FA-AL-MOT: Multimodal Fashion Price Prediction'
+  period: Fall 2025
+  category: ml
+  category_label: Multimodal learning
+  tags: [CLIP, Multimodal learning, LLMs]
+  details:
+    - Built a multimodal AI model for C2C fashion resale price prediction and product attribute classification using image and text features.
+    - Used CLIP fusion and LLM-based attribute restoration.
+- id: digiro
+  title: 'DIGIRO: Real-Time Notification Service'
+  period: Summer 2025
+  category: systems
+  category_label: Systems & software
+  tags: [FastAPI, PostgreSQL, Docker, Kubernetes, Kakao Maps]
+  details:
+    - Architected and developed a real-time notification service using FastAPI (Python) and PostgreSQL to aggregate and serve live data for Seoul’s Jongno-gu district.
+    - Containerized the application’s backend, crawler, and database services using Docker and managed deployment orchestration with Kubernetes for scalability and reliability.
+    - Integrated multiple external sources, including Seoul Public Data and Kakao Maps APIs, to provide users with an interactive map visualizing protest locations, routes, and traffic control areas.
+- id: news-summarization
+  title: News Summarization with GPT-2 & Knowledge Distillation
+  period: Spring 2025
+  category: ml
+  category_label: Natural language processing
+  tags: [GPT-2, LLaMA3-8B, Knowledge distillation, CNN/DailyMail]
+  details:
+    - Enhanced GPT-2 summarization on the CNN/DailyMail dataset; sequence-level distillation from LLaMA3-8B improved ROUGE-1 by 20.6% and METEOR by 54.6%.
+    - Analyzed decoder-only model limitations and cross-model distillation challenges.
+- id: convenience-store
+  title: Convenience-Store Management Application
+  period: Spring 2025
+  category: systems
+  category_label: Systems & software
+  tags: [C, MySQL, Business analytics]
+  details:
+    - Built a C/MySQL CLI tool for business analytics queries.
+- id: lighting-control
+  title: Automated Lighting Control via Object Detection
+  period: Winter 2024
+  category: ml
+  category_label: Computer vision
+  tags: [YOLO, ByteTrack, Object detection]
+  details:
+    - Integrated YOLO and ByteTrack with a line-crossing counter to trigger lights based on occupancy.
+- id: rag-chatbot
+  title: RAG Chatbot for Academic Catalog
+  period: Fall 2024
+  category: ml
+  category_label: Natural language processing
+  tags: [RAG, SOLAR, ChromaDB, Streamlit]
+  details:
+    - Built a RAG pipeline with SOLAR embeddings, SOLAR API, ChromaDB, and a Streamlit UI for real-time Q&A on an academic catalog.
+- id: fine-grained-classification
+  title: Fine-Grained Classification
+  period: Spring 2024
+  category: ml
+  category_label: Computer vision
+  tags: [ResNet-101, CUB-200-2011, Adversarial robustness]
+  details:
+    - Developed a ResNet-101 classifier on CUB-200-2011; augmented data with Gaussian noise to defend against PGD attacks.

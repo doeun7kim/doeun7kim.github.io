@@ -1,0 +1,51 @@
+education:
+  institution: Sogang University
+  degree: B.S. in Mathematics and Computer Science
+  period: Mar 2021 – Present
+  gpa: 4.16 / 4.30
+  graduation: Feb 2027
+interests:
+  - Machine Learning
+  - Causal Machine Learning
+  - Causal Foundation Models
+research_experience:
+  - lab: Causality Lab
+    institution: SNU Graduate School of Data Science
+    role: Undergraduate Researcher
+    advisor: Prof. Sanghack Lee
+    advisor_url: https://www.sanghacklee.me/
+    period: Jul 2025 – Present
+  - lab: SKI-ML Lab
+    institution: SNU Graduate School of Data Science
+    role: Intern
+    advisor: Prof. Jay-Yoon Lee
+    period: Jun 2024 – Aug 2024
+honors:
+  - title: Outstanding Scholar
+    description: KT · One of four recipients.
+    period: Jan 2026
+  - title: Excellence Award
+    description: Inquiry Community Program, Sogang University · For the automated lighting control project.
+    period: Jan 2026
+  - title: KT Digital Talent Scholarship
+    description: KT · Full funding.
+    period: 2025 – Present
+  - title: Dean’s List
+    description: College of Natural Sciences, Sogang University · 2021 academic year.
+    period: '2022'
+service:
+  - title: Volunteer Note-Taker, Computer Networks
+    institution: Sogang University
+    period: Spring 2026
+    description: Prepared lecture notes to support course accessibility for a student with a hearing impairment.
+  - title: Teaching Assistant, Introduction to AI Programming
+    institution: Sogang University · COR1010
+    period: Winter 2024; Summer 2025
+    description: Answered programming questions and assisted with assignments and course administration.
+skills:
+  - label: Programming & data
+    items: [Python, C/C++, SQL, SAS, MATLAB]
+  - label: Tools
+    items: [Git, Docker, Kubernetes, PostgreSQL/MySQL, LaTeX]
+  - label: Languages
+    items: [Korean (native), English (fluent)]

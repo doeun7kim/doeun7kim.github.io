@@ -1,7 +1,9 @@
 title: "Doeun Kim"
-description: "Academic homepage of Doeun Kim, undergraduate researcher in causal machine learning."
+description: "Doeun Kim — Mathematics and Computer Science at Sogang University. Research in machine learning and causal foundation models."
 url: "https://doeun7kim.github.io"
 baseurl: ""
+cv_path: "/assets/pdf/CV_Doeun_Kim.pdf"
+cv_updated: "September 2026"
 
 author:
   name: "Doeun Kim"
@@ -28,3 +30,7 @@ exclude:
   - "README.md"
   - "vendor"
   - "node_modules"
+  - "CV"
+  - "tmp"
+  - "scripts"
+  - "MyPicture.jpg"

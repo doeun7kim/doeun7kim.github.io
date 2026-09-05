@@ -3,6 +3,7 @@ _site/
 .sass-cache/
 .bundle/
 .tools/
+tmp/
 vendor/
 Gemfile.lock
 MyPicture.jpg

@@ -7,6 +7,7 @@
   if (!toggle) {
     return;
   }
+  toggle.hidden = false;
 
   function currentTheme() {
     return root.getAttribute("data-theme") === "dark" ? "dark" : "light";
@@ -20,6 +21,7 @@
       "aria-label",
       normalized === "dark" ? "Switch to light mode" : "Switch to dark mode"
     );
+    toggle.title = normalized === "dark" ? "Switch to light mode" : "Switch to dark mode";
 
     try {
       localStorage.setItem("theme", normalized);

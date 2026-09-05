@@ -1,27 +1,35 @@
 # Doeun Kim Academic Homepage
 
-This repository contains a lightweight Jekyll academic homepage designed for GitHub Pages at `https://doeun7kim.github.io`.
+Academic website at https://doeun7kim.github.io, built with Jekyll and published from the `main` branch through GitHub Pages.
 
-## Local Development
+## Local development
 
-Install Ruby and Bundler, then run:
+With Ruby and Bundler installed:
 
 ```sh
 bundle install
 bundle exec jekyll serve
 ```
 
-The site will be available at `http://127.0.0.1:4000/`.
+Open http://127.0.0.1:4000. To build without serving, run `bundle exec jekyll build`.
 
-## GitHub Pages Deployment
+## Updating content
 
-1. Change your GitHub username to `doeun7kim`, or create/sign in to the `doeun7kim` account.
-2. Create a repository named `doeun7kim.github.io`.
-3. Push this repository to `doeun7kim/doeun7kim.github.io`.
-4. Open the repository settings.
-5. Under Pages, choose the branch that contains this site and set the source folder to the repository root.
-6. Save the Pages settings and wait for GitHub Pages to build the site.
+The September 2026 update is based on the latest `CV/main.tex` and `CV/main.pdf` in the local workspace.
 
-GitHub Pages serves `https://doeun7kim.github.io` only from the `doeun7kim` user or organization account. If the repository is created under `mngldmny`, the user-site URL will be `https://mngldmny.github.io`.
+- `_data/profile.yml`: education, interests, research experience, honors, academic service, and skills.
+- `_data/publications.yml`: workshop titles, author order and contribution marks, venues, and paper links.
+- `_data/projects.yml`: project descriptions, dates, topics, and homepage highlights. The first three projects appear on the homepage.
+- `assets/pdf/CV_Doeun_Kim.pdf`: the downloadable CV. Replace this with the latest compiled PDF, then update `cv_updated` in `_config.yml`.
 
-The downloadable CV is expected at `assets/pdf/CV_Doeun_Kim.pdf`.
+The home, research, projects, CV, and search views reuse this data. Keep the data and PDF synchronized when updating the CV. Local CV sources, review archives, transcripts, and temporary files are excluded from the published site.
+
+## Design and interactions
+
+The shared layout and stylesheet provide responsive layouts, light and dark themes, keyboard-accessible search, and project filters. Search is generated from the same content data at `/search.json`. Without JavaScript, navigation, all project content, paper links, and CV downloads remain available.
+
+The site uses local assets and system fonts; no external font or JavaScript services are required.
+
+## Publishing
+
+Push the reviewed website changes to `main`. GitHub Pages builds and publishes the repository root to the existing website address.

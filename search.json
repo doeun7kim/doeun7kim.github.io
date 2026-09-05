@@ -1,0 +1,12 @@
+---
+layout: null
+permalink: /search.json
+---
+[
+  {"title":"About Doeun Kim","url":{{ '/' | relative_url | jsonify }},"summary":"Profile, research interests, and recent work.","text":{{ site.data.profile | jsonify | jsonify }}},
+  {"title":"Research","url":{{ '/research/' | relative_url | jsonify }},"summary":"Workshop papers and research experience.","text":{{ site.data.publications | jsonify | jsonify }}},
+  {"title":"Projects","url":{{ '/projects/' | relative_url | jsonify }},"summary":"All academic and technical projects, 2024–2026.","text":"machine learning systems software computer graphics data analysis"},
+  {"title":"Curriculum vitae","url":{{ '/cv/' | relative_url | jsonify }},"summary":"Download CV, education, honors, service, and skills.","text":{{ site.data.profile | jsonify | jsonify }}},
+  {% for paper in site.data.publications %}{"title":{{ paper.title | jsonify }},"url":{{ '/research/' | append: '#' | append: paper.id | relative_url | jsonify }},"summary":{{ paper.venue | append: ' · Poster (non-archival)' | jsonify }},"text":{{ paper | jsonify | jsonify }}},{% endfor %}
+  {% for project in site.data.projects %}{"title":{{ project.title | jsonify }},"url":{{ '/projects/' | append: '#' | append: project.id | relative_url | jsonify }},"summary":{{ project.period | append: ' · ' | append: project.category_label | jsonify }},"text":{{ project | jsonify | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}
+]

@@ -1,106 +1,20 @@
 ---
 layout: default
 title: CV
-description: "CV summary for Doeun Kim."
+description: "Curriculum vitae of Doeun Kim: education, research, honors, academic service, and technical skills. Updated September 2026."
 permalink: /cv/
 ---
 
-<h1 class="page-title">CV</h1>
-
-<section class="cv-download-section">
-  <a class="cv-download-card" href="{{ '/assets/pdf/CV_Doeun_Kim.pdf' | relative_url }}">
-    <span class="cv-pdf-icon" aria-hidden="true">PDF</span>
-    <span>
-      <strong>Download CV</strong>
-      <span>CV_Doeun_Kim.pdf</span>
-    </span>
-  </a>
-</section>
-
-<section class="section">
-  <h2>Education</h2>
-  <ul class="entry-list">
-    <li class="entry">
-      <div class="entry-title">
-        <h3>Sogang University</h3>
-        <span class="entry-meta">Mar 2021 - Present</span>
-      </div>
-      <p class="role">B.S. in Mathematics and Computer Science, Seoul, South Korea</p>
-      <ul class="detail-list">
-        <li>Current: 7th semester</li>
-        <li>Leave of Absence: Mandatory military service, Oct 2022 - Apr 2024</li>
-      </ul>
-    </li>
-  </ul>
-</section>
-
-<section class="section">
-  <h2>Research Experience</h2>
-  <ul class="entry-list">
-    <li class="entry">
-      <div class="entry-title">
-        <h3>Causality Lab, SNU Graduate School of Data Science</h3>
-        <span class="entry-meta">Jul 2025 - Present</span>
-      </div>
-      <p class="role">Undergraduate Researcher, advised by Prof. Sanghack Lee</p>
-      <ul class="detail-list">
-        <li>Investigated failure modes of Causal Foundation Models under post-treatment conditioning, query misspecification, and causal structure ambiguity.</li>
-        <li>Studied graph-aware approaches for incorporating structural information into PFN-style causal foundation models.</li>
-        <li>Co-authored ICML 2026 workshop work on CFM robustness and query specification.</li>
-      </ul>
-    </li>
-    <li class="entry">
-      <div class="entry-title">
-        <h3>SKI-ML Lab, SNU Graduate School of Data Science</h3>
-        <span class="entry-meta">Jun 2024 - Aug 2024</span>
-      </div>
-      <p class="role">Intern, advised by Prof. Jay-Yoon Lee</p>
-    </li>
-  </ul>
-</section>
-
-<section class="section">
-  <h2>Teaching &amp; Service</h2>
-  <ul class="entry-list">
-    <li class="entry">
-      <div class="entry-title">
-        <h3>Sogang University</h3>
-        <span class="entry-meta">Winter 2024, Summer 2025</span>
-      </div>
-      <p class="role">Teaching Assistant, Introduction to AI Programming (COR1010)</p>
-      <p>Assisted course operation, programming assignment support, and student Q&amp;A for an introductory AI programming course.</p>
-    </li>
-    <li class="entry">
-      <div class="entry-title">
-        <h3>KATUSA, Republic of Korea Army</h3>
-        <span class="entry-meta">Oct 2022 - Apr 2024</span>
-      </div>
-      <p class="role">Military Service, Korean Augmentation to the U.S. Army</p>
-      <p>Completed mandatory military service in a bilingual U.S.-ROK Army environment.</p>
-    </li>
-  </ul>
-</section>
-
-<section class="section">
-  <h2>Scholarships, Awards &amp; Honors</h2>
-  <ul class="plain-list">
-    <li>KT Digital Talent Scholarship, KT, Full Funding, Spring 2025 - Present</li>
-    <li>Outstanding Scholar, KT Group Hope Sharing Foundation, selected as one of 4 outstanding scholars, Jan 2026</li>
-    <li>Excellence Award in Inquiry Community Program, Sogang University, for Automated Lighting Control via Object Detection, Jan 2026</li>
-    <li>Dean's List, College of Natural Sciences, Sogang University, Year of 2021, 2022</li>
-  </ul>
-</section>
-
-<section class="section">
-  <h2>Skills</h2>
-  <div class="two-column">
-    <div>
-      <h3>Programming &amp; Tools</h3>
-      <p>C/C++, Python, MySQL, SAS, MATLAB</p>
-    </div>
-    <div>
-      <h3>Languages</h3>
-      <p>Korean, Native<br>English, Fluent</p>
-    </div>
+{% assign profile = site.data.profile %}
+<header class="page-heading cv-page-heading"><div><p class="eyebrow">The story so far</p><h1>Curriculum vitae<span class="accent-period">.</span></h1><p>Education, research, and the experiences in between.</p></div><a class="button button-primary" href="{{ site.cv_path | relative_url }}" download>Download CV {% include icon.html name="download" %}</a></header>
+<div class="cv-layout">
+  <aside class="cv-sidebar"><p class="eyebrow">On this page</p><nav aria-label="CV sections"><a href="#education">Education</a><a href="#research-experience">Research experience</a><a href="#papers">Workshop papers</a><a href="#honors">Honors &amp; scholarships</a><a href="#service">Academic service</a><a href="#skills">Skills &amp; languages</a></nav><div class="cv-update"><span class="status-dot" aria-hidden="true"></span> Updated {{ site.cv_updated }}</div><a class="text-link cv-view-link" href="{{ site.cv_path | relative_url }}">View PDF <span aria-hidden="true">↗</span></a></aside>
+  <div class="cv-main">
+    <section class="cv-section" id="education"><h2>Education</h2><div class="entry-heading"><h3>{{ profile.education.institution }}</h3><span class="entry-date">{{ profile.education.period }}</span></div><p>{{ profile.education.degree }}</p><div class="education-facts"><div><span>GPA</span><strong>{{ profile.education.gpa }}</strong></div><div><span>Expected graduation</span><strong>{{ profile.education.graduation }}</strong></div></div><p class="muted">Leave of absence for mandatory military service, Oct 2022 – Apr 2024.<br>KATUSA (Korean Augmentation to the U.S. Army).</p></section>
+    <section class="cv-section" id="research-experience"><h2>Research experience</h2>{% include research-experience.html %}<p class="muted">Research interests: {{ profile.interests | join: '; ' }}.</p></section>
+    <section class="cv-section" id="papers"><h2>Workshop papers</h2>{% for paper in site.data.publications %}<article class="cv-paper"><h3><a href="{{ paper.url }}">{{ paper.title }} <span aria-hidden="true">↗</span></a></h3><p class="paper-authors">{% include authors.html %}</p><p class="muted">{{ paper.venue }} · Poster (non-archival)</p></article>{% endfor %}<p class="fine-print">* Equal contribution. † Corresponding author.</p><a class="text-link" href="{{ '/projects/' | relative_url }}">Explore all {{ site.data.projects.size }} projects <span aria-hidden="true">↗</span></a></section>
+    <section class="cv-section" id="honors"><h2>Honors &amp; scholarships</h2><ul class="cv-entry-list">{% for honor in profile.honors %}<li><div class="entry-heading"><h3>{{ honor.title }}</h3><span class="entry-date">{{ honor.period }}</span></div><p class="muted">{{ honor.description }}</p></li>{% endfor %}</ul></section>
+    <section class="cv-section" id="service"><h2>Academic service</h2><ul class="cv-entry-list">{% for service in profile.service %}<li><div class="entry-heading"><h3>{{ service.title }}</h3><span class="entry-date">{{ service.period }}</span></div><p class="entry-advisor">{{ service.institution }}</p><p>{{ service.description }}</p></li>{% endfor %}</ul></section>
+    <section class="cv-section" id="skills"><h2>Skills &amp; languages</h2><dl class="skills-list">{% for skill in profile.skills %}<div><dt>{{ skill.label }}</dt><dd>{{ skill.items | join: ', ' }}</dd></div>{% endfor %}</dl></section>
   </div>
-</section>
+</div>
