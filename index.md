@@ -11,10 +11,10 @@ body_class: home
     <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Student &amp; researcher · Seoul</p>
     <h1 id="intro-title">Hi, I’m<br><em>Doeun Kim.</em></h1>
     <p class="hero-lead">Exploring machine learning<br>through a causal lens.</p>
-    <p class="hero-bio">I study Mathematics and Computer Science at <strong>Sogang University</strong> and work as an undergraduate researcher in the <strong>Causality Lab</strong> at Seoul National University.</p>
+    <p class="hero-bio">I study Mathematics and Computer Science at <strong>Sogang University</strong> and work as an undergraduate researcher in the <strong><a href="https://www.sanghacklee.me/members/">Causality Lab</a></strong> at Seoul National University.</p>
     <div class="hero-actions">
       <a class="button button-primary" href="{{ '/research/' | relative_url }}">Explore my research <span aria-hidden="true">↗</span></a>
-      <a class="button button-secondary" href="{{ site.cv_path | relative_url }}" download>Download CV {% include icon.html name="download" %}</a>
+      <a class="button button-secondary" href="{{ site.cv_path | relative_url }}?v={{ site.cv_version }}" download>Download CV {% include icon.html name="download" %}</a>
     </div>
   </div>
   <figure class="hero-portrait">

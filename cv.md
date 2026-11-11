@@ -1,14 +1,14 @@
 ---
 layout: default
 title: CV
-description: "Curriculum vitae of Doeun Kim: education, research, honors, academic service, and technical skills. Updated September 2026."
+description: "Curriculum vitae of Doeun Kim: education, research, honors, academic service, and technical skills. Updated September 21, 2026."
 permalink: /cv/
 ---
 
 {% assign profile = site.data.profile %}
-<header class="page-heading cv-page-heading"><div><p class="eyebrow">The story so far</p><h1>Curriculum vitae<span class="accent-period">.</span></h1><p>Education, research, and the experiences in between.</p></div><a class="button button-primary" href="{{ site.cv_path | relative_url }}" download>Download CV {% include icon.html name="download" %}</a></header>
+<header class="page-heading cv-page-heading"><div><p class="eyebrow">The story so far</p><h1>Curriculum vitae<span class="accent-period">.</span></h1><p>Education, research, and the experiences in between.</p></div><a class="button button-primary" href="{{ site.cv_path | relative_url }}?v={{ site.cv_version }}" download>Download CV {% include icon.html name="download" %}</a></header>
 <div class="cv-layout">
-  <aside class="cv-sidebar"><p class="eyebrow">On this page</p><nav aria-label="CV sections"><a href="#education">Education</a><a href="#research-experience">Research experience</a><a href="#papers">Workshop papers</a><a href="#honors">Honors &amp; scholarships</a><a href="#service">Academic service</a><a href="#skills">Skills &amp; languages</a></nav><div class="cv-update"><span class="status-dot" aria-hidden="true"></span> Updated {{ site.cv_updated }}</div><a class="text-link cv-view-link" href="{{ site.cv_path | relative_url }}">View PDF <span aria-hidden="true">↗</span></a></aside>
+  <aside class="cv-sidebar"><p class="eyebrow">On this page</p><nav aria-label="CV sections"><a href="#education">Education</a><a href="#research-experience">Research experience</a><a href="#papers">Workshop papers</a><a href="#honors">Honors &amp; scholarships</a><a href="#service">Academic service</a><a href="#skills">Skills &amp; languages</a></nav><div class="cv-update"><span class="status-dot" aria-hidden="true"></span> Updated {{ site.cv_updated }}</div><a class="text-link cv-view-link" href="{{ site.cv_path | relative_url }}?v={{ site.cv_version }}">View PDF <span aria-hidden="true">↗</span></a></aside>
   <div class="cv-main">
     <section class="cv-section" id="education"><h2>Education</h2><div class="entry-heading"><h3>{{ profile.education.institution }}</h3><span class="entry-date">{{ profile.education.period }}</span></div><p>{{ profile.education.degree }}</p><div class="education-facts"><div><span>Expected graduation</span><strong>{{ profile.education.graduation }}</strong></div></div><p class="muted">Leave of absence for mandatory military service, Oct 2022 – Apr 2024.<br>KATUSA (Korean Augmentation to the U.S. Army).</p></section>
     <section class="cv-section" id="research-experience"><h2>Research experience</h2>{% include research-experience.html %}<p class="muted">Research interests: {{ profile.interests | join: '; ' }}.</p></section>

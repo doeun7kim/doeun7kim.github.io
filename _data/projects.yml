@@ -1,5 +1,5 @@
 - id: julaengrang
-  title: 'Julaengrang: Subway Crowding Avoidance with ML & Pareto Optimization'
+  title: 'Julhaengrang: Subway Crowding Avoidance with ML & Pareto Optimization'
   short_title: A less crowded commute.
   summary: Station-specific ML forecasts and Pareto optimization for subway crowding avoidance.
   period: Summer 2026
@@ -11,6 +11,7 @@
   details:
     - Built an ML-based station-avoidance service to address unavailable real-time crowding data, training station-specific models on five-minute observations across 7 stations to forecast passenger inflow and crowding probabilities.
     - Combined ML forecasts with route estimates and Pareto optimization to compare 91 station–wait options by crowding, travel time, walking, and transfers.
+    - The project was selected for further development by KT and partner organizations.
 - id: interactive-3d-graphics
   title: Interactive 3D Graphics System with OpenGL & GLSL
   short_title: A scene from every angle.
@@ -89,6 +90,7 @@
   tags: [YOLO, ByteTrack, Object detection]
   details:
     - Integrated YOLO and ByteTrack with a line-crossing counter to trigger lights based on occupancy.
+    - Received the Excellence Award in Sogang University's Inquiry Community Program (Jan 2026).
 - id: rag-chatbot
   title: RAG Chatbot for Academic Catalog
   period: Fall 2024

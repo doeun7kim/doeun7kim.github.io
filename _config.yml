@@ -3,7 +3,8 @@ description: "Doeun Kim — Mathematics and Computer Science at Sogang Universit
 url: "https://doeun7kim.github.io"
 baseurl: ""
 cv_path: "/assets/pdf/CV_Doeun_Kim.pdf"
-cv_updated: "September 2026"
+cv_updated: "September 21, 2026"
+cv_version: "20260921"
 
 author:
   name: "Doeun Kim"

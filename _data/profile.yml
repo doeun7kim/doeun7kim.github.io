@@ -27,24 +27,24 @@ honors:
     description: Inquiry Community Program, Sogang University · For the automated lighting control project.
     period: Jan 2026
   - title: KT Digital Talent Scholarship
-    description: KT · Full funding.
-    period: 2025 – Present
+    description: KT · Full tuition for four semesters.
+    period: Spring 2025 – Fall 2026
   - title: Dean’s List
     description: College of Natural Sciences, Sogang University · 2021 academic year.
     period: '2022'
 service:
-  - title: Volunteer Note-Taker, Computer Networks
+  - title: Volunteer Note-Taker, Computer Networks (CSE4175)
     institution: Sogang University
     period: Spring 2026
     description: Prepared lecture notes to support course accessibility for a student with a hearing impairment.
-  - title: Teaching Assistant, Introduction to AI Programming
-    institution: Sogang University · COR1010
+  - title: Teaching Assistant, Introduction to AI Programming (COR1010)
+    institution: Sogang University
     period: Winter 2024; Summer 2025
-    description: Answered programming questions and assisted with assignments and course administration.
+    description: Answered programming questions, assisted students with assignments, and graded coursework.
 skills:
   - label: Programming & data
     items: [Python, C/C++, SQL, SAS, MATLAB]
   - label: Tools
-    items: [Git, Docker, Kubernetes, PostgreSQL/MySQL, LaTeX]
+    items: [Git, PostgreSQL/MySQL, LaTeX]
   - label: Languages
-    items: [Korean (native), English (fluent)]
+    items: [Korean (native), English (TEPS 506/600)]
