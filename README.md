@@ -15,7 +15,7 @@ Open http://127.0.0.1:4000. To build without serving, run `bundle exec jekyll bu
 
 ## Updating content
 
-The published CV is based on the September 21, 2026 versions of `CV/main.tex` and `CV/main.pdf` in the local workspace.
+The published CV is based on the November 12, 2026 versions of `CV/main.tex` and `CV/main.pdf` in the local workspace.
 
 - `_data/profile.yml`: education, interests, research experience, honors, academic service, and skills.
 - `_data/publications.yml`: workshop titles, author order and contribution marks, venues, and paper links.

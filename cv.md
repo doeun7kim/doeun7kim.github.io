@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CV
-description: "Curriculum vitae of Doeun Kim: education, research, honors, academic service, and technical skills. Updated September 21, 2026."
+description: "Curriculum vitae of Doeun Kim: education, research, honors, academic service, and technical skills. Updated November 12, 2026."
 permalink: /cv/
 ---
 
