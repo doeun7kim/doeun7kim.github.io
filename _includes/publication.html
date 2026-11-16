@@ -1,5 +1,5 @@
 <article class="publication-entry" id="{{ paper.id }}">
-  <h2>{% if paper.url %}<a href="{{ paper.url }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</h2>
+  <h2>{{ paper.title }}{% if paper.url %} <a class="publication-link" href="{{ paper.url }}" aria-label="Openreview for {{ paper.title | escape }}">[Openreview]</a>{% endif %}</h2>
   <p class="paper-authors">{% include authors.html %}</p>
   {% if paper.kind == 'manuscript' %}<p class="publication-venue"><em>{{ paper.status }}, {{ paper.year }}</em></p>{% else %}<p class="publication-venue">{{ paper.venue }} · Poster (non-archival)</p>{% endif %}
 </article>
