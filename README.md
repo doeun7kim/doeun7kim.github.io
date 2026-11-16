@@ -22,13 +22,21 @@ The published CV is based on the November 12, 2026 versions of `CV/main.tex` and
 - `_data/projects.yml`: project descriptions, dates, and topics for the Projects page.
 - `assets/pdf/CV_Doeun_Kim.pdf`: the downloadable CV. Replace this with the latest compiled PDF, then update `cv_updated` and `cv_version` in `_config.yml`. The version is included in PDF links so visitors receive the updated file.
 
-The home, research, projects, CV, and search views reuse this data. Keep the data and PDF synchronized when updating the CV. Local CV sources, review archives, transcripts, and temporary files are excluded from the published site.
+The Home CV, Publications, Projects, and search views reuse this data. Keep the data and PDF synchronized when updating the CV. Local CV sources, review archives, transcripts, and temporary files are excluded from the published site.
 
 ## Design and interactions
 
-The shared layout and stylesheet provide responsive layouts, light and dark themes, keyboard-accessible search, and project filters. Search is generated from the same content data at `/search.json`. Without JavaScript, navigation, all project content, paper links, and CV downloads remain available.
+The shared layout and stylesheet provide responsive layouts, light and dark themes, keyboard-accessible search, project filters, and a button-operated photo flip on Home. Search is generated from the same content data at `/search.json`. Without JavaScript, navigation, all project content, paper links, and CV downloads remain available.
 
 The site uses local assets and system fonts; no external font or JavaScript services are required.
+
+## Pages and assets
+
+- Home includes the CV and the only CV download button. The previous CV URL redirects to the Home CV section.
+- Publications lists manuscripts under review separately from workshop papers. Add paper type and status in the shared publications data; omit URLs when a paper link is not available.
+- The previous Research URL redirects to Publications, preserving linked paper anchors.
+- `assets/img/icml-workshop.jpg` is the default Home photo. The Flip photo button switches to `assets/img/profile.jpg`; reduced-motion preferences are respected.
+- `assets/img/causality-lab.png` is the supplied lab logo, shown beside the lab name. The circular site monogram and favicon use uppercase DK.
 
 ## Publishing
 

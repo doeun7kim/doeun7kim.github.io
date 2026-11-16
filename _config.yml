@@ -15,14 +15,12 @@ markdown: kramdown
 permalink: pretty
 
 nav:
-  - title: "About"
+  - title: "Home"
     url: "/"
-  - title: "Research"
-    url: "/research/"
+  - title: "Publications"
+    url: "/publications/"
   - title: "Projects"
     url: "/projects/"
-  - title: "CV"
-    url: "/cv/"
 
 exclude:
   - "Gemfile"

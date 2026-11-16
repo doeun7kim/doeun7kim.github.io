@@ -1,7 +1,7 @@
-<article class="paper-card{% if include.compact %} paper-card-compact{% endif %}"{% unless include.compact %} id="{{ paper.id }}"{% endunless %}>
-  <div class="paper-meta"><span class="venue-label">{{ paper.venue }}</span><span class="paper-type">Poster · Non-archival</span></div>
-  <h3><a href="{{ paper.url }}">{{ paper.title }}</a></h3>
+<article class="paper-card{% if paper.kind == 'manuscript' %} paper-card-manuscript{% endif %}" id="{{ paper.id }}">
+  {% if paper.kind == 'manuscript' %}<div class="paper-meta"><span class="venue-label">Manuscript</span></div>{% else %}<div class="paper-meta"><span class="venue-label">{{ paper.venue }}</span><span class="paper-type">Poster · Non-archival</span></div>{% endif %}
+  <h3>{% if paper.url %}<a href="{{ paper.url }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</h3>
   <p class="paper-authors">{% include authors.html %}</p>
-  {% unless include.compact %}<p class="paper-venue-full">{{ paper.venue_full }}</p>{% endunless %}
-  <a class="text-link paper-link" href="{{ paper.url }}" aria-label="Read {{ paper.title | escape }} on OpenReview">Read paper <span aria-hidden="true">↗</span></a>
+  {% if paper.kind == 'manuscript' %}<p class="paper-review-status"><em>{{ paper.status }}, {{ paper.year }}</em></p>{% else %}<p class="paper-venue-full">{{ paper.venue_full }}</p>{% endif %}
+  {% if paper.url %}<a class="text-link paper-link" href="{{ paper.url }}" aria-label="Read {{ paper.title | escape }} on OpenReview">Read paper <span aria-hidden="true">↗</span></a>{% endif %}
 </article>
