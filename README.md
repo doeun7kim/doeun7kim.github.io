@@ -33,9 +33,9 @@ The site uses local assets and system fonts; no external font or JavaScript serv
 ## Pages and assets
 
 - Home includes the CV and the only CV download button. The previous CV URL redirects to the Home CV section.
-- Publications lists manuscripts under review separately from workshop papers. Add paper type and status in the shared publications data; omit URLs when a paper link is not available.
+- Publications uses a compact list without cards or category headings. Add paper type and status in the shared publications data; omit URLs when a paper link is not available.
 - The previous Research URL redirects to Publications, preserving linked paper anchors.
-- `assets/img/icml-workshop.jpg` is the default Home photo. The Flip photo button switches to `assets/img/profile.jpg`; reduced-motion preferences are respected.
+- `assets/img/icml-workshop.jpg` is the default Home photo, displayed with a square CSS crop around the poster and presenter. The Flip photo button switches to `assets/img/profile.jpg`; reduced-motion preferences are respected. Original image files are preserved.
 - `assets/img/causality-lab.png` is the supplied lab logo, shown beside the lab name. The circular site monogram and favicon use uppercase DK.
 
 ## Publishing

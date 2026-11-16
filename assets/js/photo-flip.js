@@ -5,8 +5,7 @@
   var button = figure.querySelector("[data-photo-toggle]");
   var front = figure.querySelector("[data-photo-front]");
   var back = figure.querySelector("[data-photo-back]");
-  var description = figure.querySelector("[data-photo-description]");
-  if (!button || !front || !back || !description) return;
+  if (!button || !front || !back) return;
   var flipped = false;
   button.hidden = false;
   button.addEventListener("click", function () {
@@ -16,6 +15,5 @@
     back.setAttribute("aria-hidden", String(!flipped));
     button.setAttribute("aria-pressed", String(flipped));
     button.setAttribute("aria-label", flipped ? "Show ICML workshop photo" : "Show profile portrait");
-    description.textContent = flipped ? "Profile portrait" : "At an ICML 2026 workshop";
   });
 }());
