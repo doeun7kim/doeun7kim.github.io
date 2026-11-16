@@ -10,8 +10,9 @@ body_class: home
   <div class="hero-copy">
     <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Student &amp; researcher · Seoul</p>
     <h1 id="intro-title">Hi, I’m<br><em>Doeun Kim.</em></h1>
-    <p class="hero-lead">Exploring machine learning<br>through a causal lens.</p>
-    <p class="hero-bio">I study Mathematics and Computer Science at <strong><a href="https://www.sogang.ac.kr/">Sogang University</a></strong> and work as an undergraduate researcher in the <strong><a class="lab-link" href="https://www.sanghacklee.me/members/"><span>Causality Lab</span><img class="lab-logo" src="{{ '/assets/img/causality-lab.png' | relative_url }}" alt="" width="743" height="233"></a></strong> at Seoul National University.</p>
+    <p class="hero-lead">Exploring machine learning through a causal lens.</p>
+    <p class="hero-bio">I study Mathematics and Computer Science at <strong><a href="https://www.sogang.ac.kr/">Sogang University</a></strong> and work as an undergraduate researcher in the <strong><a class="lab-link" href="https://www.sanghacklee.me/members/"><span>Causality Lab</span><img class="lab-logo" src="{{ '/assets/img/causality-lab.png' | relative_url }}" alt="" width="743" height="233"></a></strong> <span class="no-wrap">at Seoul National University.</span></p>
+    <p class="hero-bio hero-interests">I’m interested in causal machine learning and causal foundation models. In particular, I’m curious about how models can answer different causal questions, and how the choice of query and variables shapes what they can reliably infer.</p>
     <div class="hero-actions">
       <a class="button button-secondary" href="{{ site.cv_path | relative_url }}?v={{ site.cv_version }}" download>Download CV {% include icon.html name="download" %}</a>
     </div>
