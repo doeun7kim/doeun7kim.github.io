@@ -78,7 +78,7 @@ sup { font-size: .7em; line-height: 0; }
 .hero h1 em { color: var(--accent); font-weight: 400; }
 .hero-lead { font-family: var(--serif); font-size: 1.5rem; font-size: clamp(.8rem,4.5cqi,1.5rem); line-height: 1.45; letter-spacing: -.018em; white-space: nowrap; margin: 24px 0 18px; }
 .hero-bio { color: var(--muted); font-size: .9rem; line-height: 1.9; }
-.hero-interests { margin-top: 16px; }
+.hero-incoming, .hero-interests { margin-top: 16px; }
 .no-wrap { white-space: nowrap; }
 .hero-bio strong { color: var(--text); font-weight: 500; }
 .hero-bio a { text-decoration: underline; text-decoration-thickness: 1px; }
